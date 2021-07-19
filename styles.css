@@ -1,0 +1,493 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+:root {
+    /* Colors */
+    --light-cream: #fefcf7;
+    --dark-grey-blue: #333d4b;
+    --grey: #83888f;
+    --btn-color: #66d2cf;
+    --dark-cyan: #0E8784;
+    --pale-orange: #FDD6BA;
+}
+
+/* Global */
+body {
+    background-color: var(--light-cream);
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--grey);
+}
+
+/* for testing and debugging */
+header {
+    /* background-color:wheat; */
+    width: 90%;
+    margin: 30px auto;
+}
+
+#hero  {
+    position: relative;
+    width: 1280px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cta {
+    height: 728px;
+    width: 1280px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    background-color: var(--light-cream);
+    position: relative;
+}
+
+#products {
+    /* background-color: brown; */
+    height: 524.55px;
+    width: 1111px;
+    margin: 150px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#how-to {
+    height: auto;
+    width: 1045px;
+    height: 765px;
+    margin: 50px auto;
+    position: relative;
+}
+
+#footer {
+    height: 100px;
+    background-color: var(--dark-grey-blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+#hero { background-color: yellow; }
+#products { 
+    /* background-color: red;  */
+    padding: 20px 0;
+}
+/* #cta { background-color: yellowgreen; } */
+/* #how-to { background-color: antiquewhite } */
+
+/* navigation */
+.nav-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1280px;
+    height: 50px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Barlow', sans-serif;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    font-size: 1vw;
+}
+
+.nav-link:not(:last-child) {
+    margin-right: 30px;
+}
+
+.nav-link:hover {
+    color: var(--dark-grey-blue);
+}
+
+/* Hero */
+.hero-content {
+    width: 493px;
+    height: 367px;
+    /* background-color: cornflowerblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
+.hero-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.hero-heading {
+    font-size: 72px;
+    font-family: 'Fraunces', serif;
+    color: white;
+}
+
+.hero-paragraph {
+    font-size: 1rem;
+    color: var(--grey);
+    font-family: 'Barlow', sans-serif;
+}
+
+.hero-button, .how-to-button {
+    width: 217px;
+    height: 56px;
+    background-color: var(--dark-cyan);
+    color: white;
+    font-family: 'Fraunces', serif;
+    border: none;
+    border-radius: 5px;
+}
+
+.hero-button:hover {
+    background-color: var(--btn-color);
+}
+/* Products */
+.products-line {
+    position: relative;
+}
+
+.products-container {
+    /* background-color: darkblue; */
+    color: white;
+    display: flex;
+    width: 1111px;
+    height: 398.55px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.products-heading {
+    font-size: 150px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    color: var(--grey);
+    filter: opacity(50%);
+}
+
+.products-heading-overlay {
+    width: 1111px;
+    height: 196px;
+    background: rgb(254,252,247);
+    background: linear-gradient(0deg, rgba(254,252,247,1) 0%, rgba(254,252,247,0) 100%);
+    position: absolute;
+    z-index: 1;
+}
+
+.products-content {
+    width: 255px;
+    height: 134px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.products-content-heading {
+    font-size: 24px;
+    font-family: 'Fraunces', serif;
+    color: var(--dark-grey-blue);
+    margin-bottom: 20px;
+}
+
+.products-paragraph {
+    font-family: 'Barlow', sans-serif;
+    color: var(--grey);
+    text-align: center;
+    line-height: 30px;
+}
+
+.product-image {
+    width: 255px;
+    height: 193px;
+    position: absolute;
+    top: 115px;
+    z-index: 1;
+}
+/* CTA */
+.cta-content {
+    background-color: var(--dark-grey-blue);
+    width: 1280px;
+    height: 577px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    border-radius: 10px;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 1110px;
+    height: 382px;
+    bottom: 0;
+}
+
+.cta-heading {
+    color: var(--light-cream);
+    font-size: 48px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+}
+
+.cta-paragraph {
+    text-align: center;
+    margin-top: 30px;
+    line-height: 30px;
+}
+
+.cta-content-container {
+    width: 540px;
+    height: 160px;
+    color: var(--light-cream);
+    margin-top: 100px;
+}
+
+.cta-item {
+    background-color: var(--dark-cyan);    
+    width: 350px;
+    height: 382px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+
+.cta-item-content {
+    width: 255px;
+    height: 78px;
+}
+
+.cta-item-heading {
+    font-size: 24px;
+    font-family: 'Fraunces', serif;
+    color: var(--light-cream);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cta-item-paragraph {
+    color: var(--light-cream);
+    text-align: center;
+}
+
+/* How to */
+.how-to-steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 200px;
+    width: 1045px;
+    height: 453px;
+    /* background-color: yellow; */
+}
+
+.how-to-heading {
+    font-family: 'Fraunces', serif;
+    position: absolute;
+    top: 0;
+    font-size: 24px;
+    color: var(--grey);
+}
+
+.line-graphic {
+    display: flex;
+    align-items: center;
+    width: 760px;
+    height: 2px;
+    background-color: var(--pale-orange);
+    position: relative;
+    left: 0;
+    top: 120px;
+}
+
+.circle-one, 
+.circle-two,
+.circle-three {
+    width: 31px;
+    height: 31px;
+    background-color: white;
+    position: absolute;
+    border: 2px solid var(--dark-cyan);
+    border-radius: 50px;
+}
+
+.circle-one {
+    left: 0;
+}
+
+.circle-two {
+    left: 50%;
+}
+
+.circle-three {
+    right: 0;
+}
+
+.step {
+    width: 285px;
+    height: 355px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.step-number {
+    font-size: 72px;
+    color: var(--pale-orange);
+    font-family: 'Fraunces', serif;
+}
+
+.how-to-steps-heading {
+    font-size: 32px;
+    font-family: 'Fraunces', serif;
+    color: var(--dark-grey-blue);
+}
+
+.how-to-steps-paragraph {
+    line-height: 25px;
+}
+
+.how-to-button {
+    position: absolute;
+    bottom: 100px;
+}
+
+/* Footer */
+.footer-nav {
+    width: 622px;
+    height: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    margin-left: 30px;
+}
+
+.footer-nav-list {
+    display: flex;
+}
+
+.footer-nav-link:not(:last-child) {
+    margin-right: 30px;
+}
+
+.footer-sm-container {
+    margin-right: 70px;
+}
+
+.social-link:not(:last-child) {
+    margin-right: 30px;
+}
+
+@font-face {
+    font-family: 'Barlow', sans-serif;
+    src: url(./assets/fonts/Barlow-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Fraunces', serif;
+    src: url(./assets/fonts/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+}
+
+#header {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Large Desktop
+@media screen and (min-width: 1800px) {
+
+}
+
+/* Small Desktop */
+/* @media screen and (max-width: 1300px) {
+    .hero-content {
+        height: 400px;
+        top: 60px;
+    }
+
+    .hero-paragraph {
+        width: 350px;
+    }
+} */
+
+/* Tablets */
+/* @media screen and (max-width: 768px) {
+    .products-container, .cta-container {
+        flex-direction: column;
+    }
+} */
+
+/* Mobile */
+/* @media screen and (max-width: 480px) {
+    .hero-content {
+        width: 100%;
+        align-items: center;
+    }
+
+    .product-container, .products-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .how-to-steps-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+    }
+} */
+/* Notes:
+
+width should be 90% on all pages
+
+
+*/
+/* Need to convert everthing to vh and vw units */
+/* 
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV */
