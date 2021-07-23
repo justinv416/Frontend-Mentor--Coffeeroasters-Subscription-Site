@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+:root {
+    /* Colors */
+    --light-cream: #fefcf7;
+    --dark-grey-blue: #333d4b;
+    --grey: #83888f;
+    --light-cyan: #66d2cf;
+    --dark-cyan: #0E8784;
+    --pale-orange: #FDD6BA;
+}
+
+/* Global */
+body {
+    background-color: var(--light-cream);
+}
+
+li {
+    list-style-type: none;
+}
+
+li, p {
+    font-family: 'Barlow', sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--grey);
+}
+
+h1, h2, h3, .selection-item {
+    font-family: 'Fraunces', serif;
+}
+
+/* Sections */
+#header {
+    width: 1280px;
+    margin: 30px auto;
+}
+
+#how-to {
+    height: auto;
+    width: 1280px;
+    height: 653px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--dark-grey-blue);
+    margin-bottom: 168px;
+    position: relative;
+    border-radius: 10px;
+}
+
+#selection {
+    width: 1280px;
+    margin: auto;
+}
+
+/* navigation */
+.hamburger {
+    display: none;
+}
+
+.nav-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1280px;
+    height: 50px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.nav-link:not(:last-child) {
+    margin-right: 30px;
+}
+
+.nav-link:hover {
+    color: var(--dark-grey-blue);
+}
+
+/* Hero */
+#hero {
+    width: 1280px;
+    height: 450px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 168px;
+}
+
+.hero-image {
+    border-radius: 10px;
+}
+
+.hero-content {
+    width: 445px;
+    height: 182px;
+    position: absolute;
+    top: 134px;
+    left: 85px;
+    color: var(--light-cream)
+}
+
+.hero-heading {
+    font-size: 72px;
+}
+
+.hero-paragraph {
+    line-height: 26px;
+    filter: opacity(0.8);
+}
+
+/* How to */
+.how-to-steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 1045px;
+    height: 453px;
+    position: absolute;
+    left: 85px;
+}
+
+.how-to-heading {
+    font-size: 24px;
+    color: var(--grey);
+}
+
+.line-graphic {
+    display: flex;
+    align-items: center;
+    width: 760px;
+    height: 2px;
+    background-color: var(--pale-orange);
+    position: absolute;
+    left: 85px;
+    top: 100px;
+}
+
+.circle-one, 
+.circle-two,
+.circle-three {
+    width: 31px;
+    height: 31px;
+    position: absolute;
+    border: 3px solid var(--dark-cyan);
+    border-radius: 50px;
+}
+
+.circle-one {
+    left: 0;
+}
+
+.circle-two {
+    left: 50%;
+}
+
+.circle-three {
+    right: 0;
+}
+
+.step {
+    width: 285px;
+    height: 355px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.step-number {
+    height: 72px;
+    font-size: 72px;
+    color: var(--pale-orange);
+    font-family: 'Fraunces', serif;
+}
+
+.how-to-steps-heading {
+    font-size: 32px;
+    width: 255px;
+    height: 73px;
+    color: var(--light-cream);
+}
+
+.how-to-steps-paragraph {
+    line-height: 25px;
+    color: var(--light-cream);
+    height: 130px;
+}
+
+
+/* Selection */
+.selection-list-container {
+    width: 255px;
+    height: 356px;
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+}
+
+.preference-container {
+    width: 730px;
+    height: 354px;
+    background-color: tomato;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 88px;
+}
+
+.preferences-container {
+    position: absolute;
+    right: 165px;
+}
+
+.preference-heading {
+    font-size: 40px;
+}
+
+.preference-selection-container {
+    width: 730px;
+    height: 250px;
+    background-color: turquoise;
+    display: flex;
+    justify-content: space-between;
+}
+
+.preference-selection-item {
+    width: 228px;
+    height: 250px;
+    background-color: steelblue;
+    border: 2px solid black;
+}
