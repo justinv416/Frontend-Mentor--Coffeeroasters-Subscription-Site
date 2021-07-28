@@ -27,6 +27,7 @@
         <section id="hero">
           <img src="./assets/plan/desktop/image-hero-blackcup.jpg" alt="" class="hero-image">
           <img src="./assets/plan/tablet/image-hero-blackcup.jpg" alt="" class="hero-image-tablet">
+          <img src="./assets/plan/mobile/image-hero-blackcup.jpg" alt="" class="hero-image-mobile">
           <div class="hero-content">
             <h1 class="hero-heading">Create plan</h1>
             <p class="hero-paragraph">
@@ -85,8 +86,8 @@
                 <h3 class="preference-heading">How do you drink your coffee?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
-              <div class="preference-selection-container">
-                <div class="preference-selection-item">
+              <div class="preference-selection-container" id="brew-type">
+                <div class="preference-selection-item" id="capsule">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Capsule</h4>
                     <p class="preference-selection-paragraph">
@@ -94,7 +95,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="filter">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Filter</h4>
                     <p class="preference-selection-paragraph">
@@ -102,7 +103,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="espresso">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Espresso</h4>
                     <p class="preference-selection-paragraph">
@@ -118,7 +119,7 @@
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
               <div class="preference-selection-container">
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="single-origin">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Single origin</h4>
                     <p class="preference-selection-paragraph">
@@ -126,7 +127,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="decaf">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Decaf</h4>
                     <p class="preference-selection-paragraph">
@@ -134,7 +135,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="blended">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Blended</h4>
                     <p class="preference-selection-paragraph">
@@ -150,7 +151,7 @@
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
               <div class="preference-selection-container">
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="quarter">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">250g</h4>
                     <p class="preference-selection-paragraph">
@@ -158,7 +159,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="half">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">500g</h4>
                     <p class="preference-selection-paragraph">
@@ -166,7 +167,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="full">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">1000g</h4>
                     <p class="preference-selection-paragraph">
@@ -182,7 +183,7 @@
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
               <div class="preference-selection-container">
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="whole-bean">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Wholebean</h4>
                     <p class="preference-selection-paragraph">
@@ -190,7 +191,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="filter-grind">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Filter</h4>
                     <p class="preference-selection-paragraph">
@@ -198,7 +199,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="cafetiere">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Cafetiére</h4>
                     <p class="preference-selection-paragraph">
@@ -214,7 +215,7 @@
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
               <div class="preference-selection-container">
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="weekly">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Every week</h4>
                     <p class="preference-selection-paragraph">
@@ -222,7 +223,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="bi-weekly">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Every 2 weeks</h4>
                     <p class="preference-selection-paragraph">
@@ -230,7 +231,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="preference-selection-item">
+                <div class="preference-selection-item" id="monthly">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Every month</h4>
                     <p class="preference-selection-paragraph">
@@ -240,22 +241,19 @@
                 </div>
               </div>
             </div>
-            <div class="order-summary">
-              <h5 class="order-summary-heading">Order Summary</h5>
-              <p class="order-summary-paragraph">
-                "I drink my coffee using <hr>,with a <hr>type of bean.<hr>, sent to me <hr>"
-              </p>
+            <div class="order-summary"></div>
+            <div class="order-button-container">
+              <button class="order-button">Create plan</button>
             </div>
-            <button class="order-button">Create plan</button>
           </div>
         </section>
         <footer id="footer">
           <nav class="footer-nav">
             <img src="./assets/shared/desktop/logo-footer.svg" alt="" class="footer-logo">
             <ul class="footer-nav-list">
-              <a href="#" class="footer-nav-link"><li class="footer-nav-item">Home</li></a>
-              <a href="#" class="footer-nav-link"><li class="footer-nav-item">About Us</li></a>
-              <a href="#" class="footer-nav-link"><li class="footer-nav-item">Create Your Plan</li></a>
+              <a href="index.html" class="footer-nav-link"><li class="footer-nav-item">Home</li></a>
+              <a href="about.html" class="footer-nav-link"><li class="footer-nav-item">About Us</li></a>
+              <a href="plan.html" class="footer-nav-link"><li class="footer-nav-item">Create Your Plan</li></a>
             </ul>
           </nav>
           <div class="footer-sm-container">
@@ -272,5 +270,6 @@
         </div>
       </footer>
       </main>
+      <script src="plan.js"></script>
     </body>
   </html>
