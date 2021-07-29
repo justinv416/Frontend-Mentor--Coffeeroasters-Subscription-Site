@@ -38,14 +38,16 @@ const options = {
 };
 
 //Order Sentence
-const initialSentence = `
-<h5 class="order-summary-heading">Order Summary</h5>
-<p class=order-summary-paragraph>"I drink my coffee <span class="order-span">...</span>, 
-with a <span class="order-span">...</span> type of bean. <span class="order-span">...</span> ground 
-ala <span class="order-span">...</span>, sent to me <span class="order-span">...</span>."</p>
-`
+const initialSentence = () => {
+    orderSummary.innerHTML = `
+        <h5 class="order-summary-heading">Order Summary</h5>
+        <p class=order-summary-paragraph>"I drink my coffee <span class="order-span">...</span>, 
+        with a <span class="order-span">...</span> type of bean. <span class="order-span">...</span> ground 
+        ala <span class="order-span">...</span>, sent to me <span class="order-span">...</span>."</p>  `
+}
 
-orderSummary.innerHTML = initialSentence;
+initialSentence();
+
 
 //Order Summary constructor
 const orderPara = (drinkType, coffeeType, amount, grinds, frequency) => {
@@ -56,6 +58,9 @@ const orderPara = (drinkType, coffeeType, amount, grinds, frequency) => {
     ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
     `
 }
+
+//checkout
+let total;
 
 //Drink Types
 const capsule = document.querySelector('#capsule');
@@ -184,6 +189,8 @@ weekly.addEventListener('click', () => {
     monthly.classList.remove('color');
     frequency = 'every week'
     orderPara(drinkType, coffeeType, amount, grinds, frequency)
+    total = 14;
+    console.log(total)
 });
 
 biWeekly.addEventListener('click', () => {
@@ -192,6 +199,7 @@ biWeekly.addEventListener('click', () => {
     monthly.classList.remove('color');
     frequency = 'every 2 weeks'
     orderPara(drinkType, coffeeType, amount, grinds, frequency)
+    total = 17.25
 });
 
 monthly.addEventListener('click', () => {
@@ -200,12 +208,9 @@ monthly.addEventListener('click', () => {
     weekly.classList.remove('color');
     frequency = 'every month'
     orderPara(drinkType, coffeeType, amount, grinds, frequency)
+    total = 22.50
 });
 
-//not working
-if(orderSummary.contains(orderPara(drinkType, coffeeType, amount, grinds, frequency))){
-    orderButton.style.backgroundColor = 'red'
-};
 
 // TODO:
 
@@ -213,4 +218,5 @@ if(orderSummary.contains(orderPara(drinkType, coffeeType, amount, grinds, freque
 // 2. change color of selections on hover **DONE**
 // 3. populate order summary with selections that are selected  
 // 4. create modal/order confirmation
-// 5. create mobile navigation.
+/* 5. create mobile navigation. **DONE but need to fix media query- 
+bug where navlist is still open on resize or when changing page ** */
