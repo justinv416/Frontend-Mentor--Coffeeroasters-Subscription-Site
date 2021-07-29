@@ -73,20 +73,20 @@
         <section id="selection">
           <div class="selection-list-container">
             <ul class="selection-list">
-              <li class="selection-item"><span class="span-one">1</span> Preferences</li><hr>
-              <li class="selection-item"><span>2</span> Bean Type</li><hr>
-              <li class="selection-item"><span>3</span> Quantity</li><hr>
-              <li class="selection-item"><span>4</span> Grind Option</li><hr>
-              <li class="selection-item"><span>5</span> Deliveries</li><hr>
+              <a href="#preferences"><li class="selection-item"><span class="selection-span span-one">1</span> Preferences</li><hr></a>
+              <a href="#bean-type"><li class="selection-item"><span class="selection-span">2</span> Bean Type</li><hr></a>
+              <a href="#quantity"><li class="selection-item"><span class="selection-span">3</span> Quantity</li><hr></a>
+              <a href="#grind-option"><li class="selection-item"><span class="selection-span">4</span> Grind Option</li><hr></a>
+              <a href="#deliveries"><li class="selection-item"><span class="selection-span">5</span> Deliveries</li><hr></a>
             </ul>
           </div>
           <div class="preferences-container">
-            <div class="preference-container preference-one">
-              <div class="preference-heading-container">
+            <div class="preference-container">
+              <div class="preference-heading-container" id="preferences">
                 <h3 class="preference-heading">How do you drink your coffee?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
-              <div class="preference-selection-container" id="brew-type">
+              <div class="preference-selection-container">
                 <div class="preference-selection-item" id="capsule">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Capsule</h4>
@@ -114,7 +114,7 @@
               </div>
             </div>
             <div class="preference-container">
-              <div class="preference-heading-container">
+              <div class="preference-heading-container" id="bean-type">
                 <h3 class="preference-heading">What type of coffee?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
@@ -146,7 +146,7 @@
               </div>
             </div>
             <div class="preference-container preference-three">
-              <div class="preference-heading-container">
+              <div class="preference-heading-container" id="quantity">
                 <h3 class="preference-heading">How much would you like?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
@@ -178,7 +178,7 @@
               </div>
             </div>
             <div class="preference-container preference-four">
-              <div class="preference-heading-container">
+              <div class="preference-heading-container" id="grind-option">
                 <h3 class="preference-heading">Want us to grind them?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
@@ -210,7 +210,7 @@
               </div>
             </div>
             <div class="preference-container preference-five">
-              <div class="preference-heading-container">
+              <div class="preference-heading-container" id="deliveries">
                 <h3 class="preference-heading">How often should we deliver?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="" class="preference-arrow">
               </div>
@@ -241,7 +241,9 @@
                 </div>
               </div>
             </div>
-            <div class="order-summary"></div>
+            <div class="order-summary">
+              <div class="order-summary-content"></div>
+            </div>
             <div class="order-button-container">
               <button class="order-button">Create plan</button>
             </div>

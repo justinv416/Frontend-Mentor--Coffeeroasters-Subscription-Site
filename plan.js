@@ -1,11 +1,61 @@
 //Query selectors 
+//Preference section selectors
 const arrows = document.querySelectorAll('.preference-arrow');
 const prefHeading = document.querySelectorAll('.preference-heading');
 const headingContainer = document.querySelectorAll('.preference-heading-container')
 const prefsContainer = document.querySelectorAll('.preference-selection-container');
 const prefContainer = document.querySelectorAll('.preference-container');
 const prefItem = document.querySelectorAll('.preference-selection-item')
-const orderSummary = document.querySelector('.order-summary');
+//Order section selectors
+const orderSummary = document.querySelector('.order-summary-content');
+const orderButton = document.querySelector('.order-button');
+
+//Function to rotate arrows
+const rotateArrow = () => arrows.forEach(arrow => {
+    arrow.classList.toggle('rotate');
+})
+
+//Accordion for preferences
+headingContainer.forEach(container => {
+    container.addEventListener('click', () => {
+        container.nextElementSibling.classList.toggle('show');
+        container.children[1].classList.toggle('rotate')
+    })
+})
+
+//Hides all preferences
+for(let i = 0; i < headingContainer.length; i++) {
+    headingContainer[i].nextElementSibling.classList.add('hide')
+}
+
+const options = {
+    brewType: ['capsule', 'filter', 'espresso'],
+    coffeeType: ['single origin', 'decaf', 'blended'],
+    coffeeAmount: ['250g', '500g', '1000g'],
+    grindType: ['wholebean', 'filter', 'cafetiére'],
+    deliverFreq: ['every week', 'every 2 weeks', 'every month'],
+    price: ['$14.00', '$17.25', '$22.50']
+};
+
+//Order Sentence
+const initialSentence = `
+<h5 class="order-summary-heading">Order Summary</h5>
+<p class=order-summary-paragraph>"I drink my coffee <span class="order-span">...</span>, 
+with a <span class="order-span">...</span> type of bean. <span class="order-span">...</span> ground 
+ala <span class="order-span">...</span>, sent to me <span class="order-span">...</span>."</p>
+`
+
+orderSummary.innerHTML = initialSentence;
+
+//Order Summary constructor
+const orderPara = (drinkType, coffeeType, amount, grinds, frequency) => {
+   orderSummary.innerHTML = `
+    <h5 class="order-summary-heading">Order Summary</h5>
+    <p class=order-summary-paragraph>"I drink my coffee <span class="order-span">${drinkType}</span>, 
+    with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span> ground 
+    ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
+    `
+}
 
 //Drink Types
 const capsule = document.querySelector('#capsule');
@@ -13,21 +63,27 @@ const filter = document.querySelector('#filter');
 const espresso = document.querySelector('#espresso');
 
 capsule.addEventListener('click', () => {
-    capsule.classList.add('color')
-    filter.classList.remove('color')
-    espresso.classList.remove('color')
+    capsule.classList.toggle('color');
+    filter.classList.remove('color');
+    espresso.classList.remove('color');
+    drinkType = 'capsule';
+    orderPara(drinkType);
 });
 
 filter.addEventListener('click', () => {
-    filter.classList.add('color')
+    filter.classList.toggle('color')
     capsule.classList.remove('color')
     espresso.classList.remove('color')
+    drinkType = 'filter'
+    orderPara(drinkType)
 });
 
 espresso.addEventListener('click', () => {
-    espresso.classList.add('color')
+    espresso.classList.toggle('color')
     filter.classList.remove('color')
     capsule.classList.remove('color')
+    drinkType = 'espresso'
+    orderPara(drinkType)
 });
 
 //Coffee Types
@@ -36,21 +92,27 @@ const decaf = document.querySelector('#decaf');
 const blended = document.querySelector('#blended');
 
 singleOrigin.addEventListener('click', () => {
-    singleOrigin.classList.add('color')
+    singleOrigin.classList.toggle('color')
     decaf.classList.remove('color')
     blended.classList.remove('color')
+    coffeeType = 'single origin'
+    orderPara(drinkType, coffeeType)
 });
 
 decaf.addEventListener('click', () => {
-    decaf.classList.add('color')
+    decaf.classList.toggle('color')
     singleOrigin.classList.remove('color')
     blended.classList.remove('color')
+    coffeeType = 'decaf'
+    orderPara(drinkType, coffeeType)
 });
 
 blended.addEventListener('click', () => {
-    blended.classList.add('color')
+    blended.classList.toggle('color')
     singleOrigin.classList.remove('color')
     decaf.classList.remove('color')
+    coffeeType = 'blended'
+    orderPara(drinkType, coffeeType)
 });
 
 //Amounts
@@ -59,21 +121,27 @@ const half = document.querySelector('#half');
 const full = document.querySelector('#full');
 
 quarter.addEventListener('click', () => {
-    quarter.classList.add('color');
+    quarter.classList.toggle('color');
     half.classList.remove('color');
     full.classList.remove('color');
+    amount = '250g'
+    orderPara(drinkType, coffeeType, amount)
 });
 
 half.addEventListener('click', () => {
-    half.classList.add('color');
+    half.classList.toggle('color');
     quarter.classList.remove('color');
     full.classList.remove('color');
+    amount = '500g'
+    orderPara(drinkType, coffeeType, amount)
 });
 
 full.addEventListener('click', () => {
-    full.classList.add('color');
+    full.classList.toggle('color');
     half.classList.remove('color');
     quarter.classList.remove('color');
+    amount = '1000g'
+    orderPara(drinkType, coffeeType, amount)
 });
 
 //Grinds 
@@ -82,21 +150,27 @@ const filterGrind = document.querySelector('#filter-grind');
 const cafetiere = document.querySelector('#cafetiere');
 
 wholeBean.addEventListener('click', () => {
-    wholeBean.classList.add('color');
+    wholeBean.classList.toggle('color');
     filterGrind.classList.remove('color');
     cafetiere.classList.remove('color');
+    grinds = 'whole bean'
+    orderPara(drinkType, coffeeType, amount, grinds)
 });
 
 filterGrind.addEventListener('click', () => {
-    filterGrind.classList.add('color');
+    filterGrind.classList.toggle('color');
     wholeBean.classList.remove('color');
     cafetiere.classList.remove('color');
+    grinds = 'filter'
+    orderPara(drinkType, coffeeType, amount, grinds)
 });
 
 cafetiere.addEventListener('click', () => {
-    cafetiere.classList.add('color');
+    cafetiere.classList.toggle('color');
     filterGrind.classList.remove('color');
     wholeBean.classList.remove('color');
+    grinds = 'cafetiere'
+    orderPara(drinkType, coffeeType, amount, grinds)
 });
 
 //Deliveries
@@ -105,68 +179,38 @@ const biWeekly = document.querySelector('#bi-weekly');
 const monthly = document.querySelector('#monthly');
 
 weekly.addEventListener('click', () => {
-    weekly.classList.add('color');
+    weekly.classList.toggle('color');
     biWeekly.classList.remove('color');
     monthly.classList.remove('color');
+    frequency = 'every week'
+    orderPara(drinkType, coffeeType, amount, grinds, frequency)
 });
 
 biWeekly.addEventListener('click', () => {
-    biWeekly.classList.add('color');
+    biWeekly.classList.toggle('color');
     weekly.classList.remove('color');
     monthly.classList.remove('color');
+    frequency = 'every 2 weeks'
+    orderPara(drinkType, coffeeType, amount, grinds, frequency)
 });
 
 monthly.addEventListener('click', () => {
-    monthly.classList.add('color');
+    monthly.classList.toggle('color');
     biWeekly.classList.remove('color');
     weekly.classList.remove('color');
+    frequency = 'every month'
+    orderPara(drinkType, coffeeType, amount, grinds, frequency)
 });
 
+//not working
+if(orderSummary.contains(orderPara(drinkType, coffeeType, amount, grinds, frequency))){
+    orderButton.style.backgroundColor = 'red'
+};
 
-// orderSummary.innerHTML = `
-// <h5 class="order-summary-heading">Order Summary</h5>
-// <p>"I drink my coffee ${}, with a ${} type of bean.${} gorund ala ${}, 
-// sent to me ${}"</p>
-// `
+// TODO:
 
-//somewhat working need to show only respective container
-// arrows.forEach(arrow => {
-//     arrow.addEventListener('click', () => {
-//             arrow.classList.toggle('rotate')
-//             let i;
-//             for(i = 0; i < arrows.length; i++) {
-//                 headingContainer[i].nextElementSibling.classList.toggle('show');
-
-//             }
-//         })
-//         // toggle children
-//         // prefsContainer[0].classList.remove('hide')
-//         // prefsContainer[0].classList.add('show')
-        
-// })
-
-// const options = {
-//     brewType: ['capsule', 'filter', 'espresso'],
-//     coffeeType: ['single origin', 'decaf', 'blended'],
-//     coffeeAmount: ['250g', '500g', '1000g'],
-//     grindType: ['wholebean', 'filter', 'cafetiére'],
-//     deliverFreq: ['every week', 'every 2 weeks', 'every month']
-// };
-
-// hides all preferences
-// for(let i = 0; i < prefsContainer.length; i++) {
-//     prefsContainer[i].classList.add('hide');
-// };
-
-
-/*
-
-TODO:
-
-1. hide and show selections on click, rotate arrow accordingly 
-2. change color of selections on hover 
-3. populate order summary with selections that are selected  
-4. create modal/order confirmation
-5. create mobile navigation
-
-*/
+// 1. hide and show selections on click, rotate arrow accordingly **DONE**
+// 2. change color of selections on hover **DONE**
+// 3. populate order summary with selections that are selected  
+// 4. create modal/order confirmation
+// 5. create mobile navigation.

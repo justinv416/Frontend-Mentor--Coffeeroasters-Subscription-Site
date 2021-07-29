@@ -54,7 +54,7 @@ h1, h2, h3, h4, .selection-item {
 }
 
 .color {
-    background-color: var(--dark-cyan);
+    background-color: var(--dark-cyan) !important;
     color: var(--light-cream);
 }
 
@@ -257,6 +257,8 @@ h1, h2, h3, h4, .selection-item {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: sticky;
+    top: 125px;
 }
 
 .selection-list {
@@ -279,24 +281,23 @@ hr {
     color: var(--light-cyan);
 }
 
-span {
+.selection-span {
     margin-right: 28.5px;
+}
+
+.order-span {
+    color: var(--dark-cyan);
+    font-size: 24px;
 }
 
 .preference-container {
     width: 730px;
-    height: 354px;
-    /* background-color: tomato; */
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 88px;
 }
-
-/* .preferences-container {
-    position: absolute;
-    right: 165px;
-} */
 
 .preference-heading-container {
     display: flex;
@@ -317,18 +318,24 @@ span {
 .preference-selection-container {
     width: 730px;
     height: 250px;
-    /* background-color: turquoise; */
-    /* Js toggle to show */
-    display: flex;
     justify-content: space-between;
+    margin-top: 56px;
 }
 
 .preference-selection-item {
     width: 228px;
     height: 250px;
-    /* background-color: var(--dark-cream); */
+    background-color: var(--dark-cream);
     position: relative;
     border-radius: 10px;
+}
+
+.preference-selection-item:hover {
+    background-color: var(--pale-orange)
+}
+
+.item-color {
+    background-color: var(--dark-cream);
 }
 
 .preference-selection-heading {
@@ -358,16 +365,28 @@ span {
     background-color: var(--dark-grey-blue);
     margin-bottom: 40px;
     border-radius: 10px;
+    position: relative;
+}
+
+.order-summary-content {
+    width: 602px;
+    height: 154px;
+    position: absolute;
+    top: 27px;
+    left: 64px;
 }
 
 .order-summary-heading {
     color: var(--grey);
     font-family: 'Barlow', sans-serif;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 .order-summary-paragraph {
     color: var(--light-cream);
     font-family: 'Fraunces', serif;
+    font-size: 24px;
 }
 
 .order-button {
