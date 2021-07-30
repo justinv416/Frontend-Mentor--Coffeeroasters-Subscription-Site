@@ -107,6 +107,10 @@ p, li {
     height: 50px;
 }
 
+.nav-mobile {
+    display: none;
+}
+
 .nav-list {
     display: flex;
     justify-content: space-between;

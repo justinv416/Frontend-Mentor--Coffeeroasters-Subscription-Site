@@ -6,27 +6,26 @@ const headingContainer = document.querySelectorAll('.preference-heading-containe
 const prefsContainer = document.querySelectorAll('.preference-selection-container');
 const prefContainer = document.querySelectorAll('.preference-container');
 const prefItem = document.querySelectorAll('.preference-selection-item')
+const deviceType = document.querySelectorAll('.device-type')
+const overlay = document.querySelector('.overlay')
+const checkoutSummary = document.querySelector('.checkout-summary');
+const planPrice = document.querySelector('.checkout-total')
 //Order section selectors
 const orderSummary = document.querySelector('.order-summary-content');
 const orderButton = document.querySelector('.order-button');
 
-//Function to rotate arrows
-const rotateArrow = () => arrows.forEach(arrow => {
-    arrow.classList.toggle('rotate');
-})
+//Hides all preferences
+for(let i = 0; i < headingContainer.length; i++) {
+    headingContainer[i].nextElementSibling.classList.add('hide');
+};
 
 //Accordion for preferences
 headingContainer.forEach(container => {
     container.addEventListener('click', () => {
         container.nextElementSibling.classList.toggle('show');
-        container.children[1].classList.toggle('rotate')
-    })
-})
-
-//Hides all preferences
-for(let i = 0; i < headingContainer.length; i++) {
-    headingContainer[i].nextElementSibling.classList.add('hide')
-}
+        container.children[1].classList.toggle('rotate');
+    });
+});
 
 const options = {
     brewType: ['capsule', 'filter', 'espresso'],
@@ -34,23 +33,17 @@ const options = {
     coffeeAmount: ['250g', '500g', '1000g'],
     grindType: ['wholebean', 'filter', 'cafetiére'],
     deliverFreq: ['every week', 'every 2 weeks', 'every month'],
-    price: ['$14.00', '$17.25', '$22.50']
+    price: [14.00, 17.25, 22.50]
 };
 
-//Order Sentence
-const initialSentence = () => {
-    orderSummary.innerHTML = `
-        <h5 class="order-summary-heading">Order Summary</h5>
-        <p class=order-summary-paragraph>"I drink my coffee <span class="order-span">...</span>, 
-        with a <span class="order-span">...</span> type of bean. <span class="order-span">...</span> ground 
-        ala <span class="order-span">...</span>, sent to me <span class="order-span">...</span>."</p>  `
-}
-
-initialSentence();
-
+let drinkType = '...',
+    coffeeType = '...',
+    amount = '...',
+    grinds = '...',
+    frequency = '...';
 
 //Order Summary constructor
-const orderPara = (drinkType, coffeeType, amount, grinds, frequency) => {
+const orderPara = () => {
    orderSummary.innerHTML = `
     <h5 class="order-summary-heading">Order Summary</h5>
     <p class=order-summary-paragraph>"I drink my coffee <span class="order-span">${drinkType}</span>, 
@@ -58,6 +51,8 @@ const orderPara = (drinkType, coffeeType, amount, grinds, frequency) => {
     ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
     `
 }
+
+orderPara()
 
 //checkout
 let total;
@@ -71,24 +66,24 @@ capsule.addEventListener('click', () => {
     capsule.classList.toggle('color');
     filter.classList.remove('color');
     espresso.classList.remove('color');
-    drinkType = 'capsule';
-    orderPara(drinkType);
+    drinkType = options.brewType[0];
+    orderPara();
 });
 
 filter.addEventListener('click', () => {
     filter.classList.toggle('color')
     capsule.classList.remove('color')
     espresso.classList.remove('color')
-    drinkType = 'filter'
-    orderPara(drinkType)
+    drinkType = options.brewType[1];
+    orderPara();
 });
 
 espresso.addEventListener('click', () => {
     espresso.classList.toggle('color')
     filter.classList.remove('color')
     capsule.classList.remove('color')
-    drinkType = 'espresso'
-    orderPara(drinkType)
+    drinkType = options.brewType[2]
+    orderPara();
 });
 
 //Coffee Types
@@ -100,24 +95,24 @@ singleOrigin.addEventListener('click', () => {
     singleOrigin.classList.toggle('color')
     decaf.classList.remove('color')
     blended.classList.remove('color')
-    coffeeType = 'single origin'
-    orderPara(drinkType, coffeeType)
+    coffeeType = options.coffeeType[0]
+    orderPara()
 });
 
 decaf.addEventListener('click', () => {
     decaf.classList.toggle('color')
     singleOrigin.classList.remove('color')
     blended.classList.remove('color')
-    coffeeType = 'decaf'
-    orderPara(drinkType, coffeeType)
+    coffeeType = options.coffeeType[1]
+    orderPara()
 });
 
 blended.addEventListener('click', () => {
     blended.classList.toggle('color')
     singleOrigin.classList.remove('color')
     decaf.classList.remove('color')
-    coffeeType = 'blended'
-    orderPara(drinkType, coffeeType)
+    coffeeType = options.coffeeType[2]
+    orderPara()
 });
 
 //Amounts
@@ -129,24 +124,24 @@ quarter.addEventListener('click', () => {
     quarter.classList.toggle('color');
     half.classList.remove('color');
     full.classList.remove('color');
-    amount = '250g'
-    orderPara(drinkType, coffeeType, amount)
+    amount = options.coffeeAmount[0]
+    orderPara()
 });
 
 half.addEventListener('click', () => {
     half.classList.toggle('color');
     quarter.classList.remove('color');
     full.classList.remove('color');
-    amount = '500g'
-    orderPara(drinkType, coffeeType, amount)
+    amount = options.coffeeAmount[1]
+    orderPara()
 });
 
 full.addEventListener('click', () => {
     full.classList.toggle('color');
     half.classList.remove('color');
     quarter.classList.remove('color');
-    amount = '1000g'
-    orderPara(drinkType, coffeeType, amount)
+    amount = options.coffeeAmount[2]
+    orderPara()
 });
 
 //Grinds 
@@ -158,24 +153,24 @@ wholeBean.addEventListener('click', () => {
     wholeBean.classList.toggle('color');
     filterGrind.classList.remove('color');
     cafetiere.classList.remove('color');
-    grinds = 'whole bean'
-    orderPara(drinkType, coffeeType, amount, grinds)
+    grinds = options.grindType[0]
+    orderPara()
 });
 
 filterGrind.addEventListener('click', () => {
     filterGrind.classList.toggle('color');
     wholeBean.classList.remove('color');
     cafetiere.classList.remove('color');
-    grinds = 'filter'
-    orderPara(drinkType, coffeeType, amount, grinds)
+    grinds = options.grindType[1]
+    orderPara()
 });
 
 cafetiere.addEventListener('click', () => {
     cafetiere.classList.toggle('color');
     filterGrind.classList.remove('color');
     wholeBean.classList.remove('color');
-    grinds = 'cafetiere'
-    orderPara(drinkType, coffeeType, amount, grinds)
+    grinds = options.grindType[2]
+    orderPara()
 });
 
 //Deliveries
@@ -187,9 +182,10 @@ weekly.addEventListener('click', () => {
     weekly.classList.toggle('color');
     biWeekly.classList.remove('color');
     monthly.classList.remove('color');
-    frequency = 'every week'
-    orderPara(drinkType, coffeeType, amount, grinds, frequency)
-    total = 14;
+    frequency = options.deliverFreq[0]
+    orderPara()
+    total = 14.00;
+    displayTotal()
     console.log(total)
 });
 
@@ -197,20 +193,35 @@ biWeekly.addEventListener('click', () => {
     biWeekly.classList.toggle('color');
     weekly.classList.remove('color');
     monthly.classList.remove('color');
-    frequency = 'every 2 weeks'
-    orderPara(drinkType, coffeeType, amount, grinds, frequency)
+    frequency = options.deliverFreq[1]
+    orderPara()
     total = 17.25
+    displayTotal()
 });
 
 monthly.addEventListener('click', () => {
     monthly.classList.toggle('color');
     biWeekly.classList.remove('color');
     weekly.classList.remove('color');
-    frequency = 'every month'
-    orderPara(drinkType, coffeeType, amount, grinds, frequency)
-    total = 22.50
+    frequency = options.deliverFreq[2]
+    orderPara()
+    total = 22.
+    displayTotal()
 });
 
+orderButton.addEventListener('click', () => {
+    overlay.classList.toggle('visible')
+})
+
+checkoutSummary.innerHTML =  `
+<p class=order-summary-paragraph>"I drink my coffee <span class="order-span">${drinkType}</span>, 
+with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span> ground 
+ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
+`
+
+const displayTotal = () => {
+    planPrice.innerHTML = `$${total} / mo`
+}
 
 // TODO:
 

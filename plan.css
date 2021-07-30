@@ -42,11 +42,15 @@ h1, h2, h3, h4, .selection-item {
 
 /* classes for js toggle */
 .hide {
-    display: none !important;
+    display: none;
 }
 
 .show {
     display: flex;
+}
+
+.visible {
+    display: block !important;
 }
 
 .rotate {
@@ -58,10 +62,21 @@ h1, h2, h3, h4, .selection-item {
     color: var(--light-cream);
 }
 
+/* Overlay */
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    display: none;
+}
+
 /* Sections */
 #header {
     width: 1280px;
-    margin: 30px auto;
+    padding: 30px 0px;
+    margin: auto;
 }
 
 #how-to {
@@ -391,6 +406,75 @@ hr {
     color: var(--light-cream);
     font-family: 'Fraunces', serif;
     font-size: 24px;
+    line-height: 40px;
+}
+
+.order-checkout-container {
+    width: 540px;
+    height: 597px;
+    background-color: white;
+    margin: 5% auto;
+    border-radius: 10px;
+}
+
+.checkout-heading-container {
+    background-color: var(--dark-grey-blue);
+    width: 540px;
+    height: 136px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-heading {
+    color: var(--light-cream);
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+}
+
+.checkout-summary {
+    width: 428px;
+    height: 160px;
+    background-color: yellowgreen;
+    margin: 0 auto;
+}
+
+.checkout-confirmation {
+    width: 428px;
+    height: 78px;
+    background-color: yellow;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-finalize {
+    width: 428px;
+    height: 56px;
+    background-color: lightcoral;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.checkout-finalize-button {
+    width: 217px;
+    height: 56px;
+    background-color: var(--dark-cyan);
+    font-family: 'Fraunces', serif;
+    border: none;
+    color: var(--light-cream);
+    border-radius: 10px;
+}
+
+.checkout-finalize-button:hover {
+    background-color: var(--light-cyan);
+}
+
+.checkout-total {
+    font-size: 32px;
+    font-family: 'Fraunces', serif;
 }
 
 .order-button {
