@@ -1,19 +1,5 @@
-//Query selectors 
-//Preference section selectors
-const arrows = document.querySelectorAll('.preference-arrow');
-const prefHeading = document.querySelectorAll('.preference-heading');
-const headingContainer = document.querySelectorAll('.preference-heading-container')
-const prefsContainer = document.querySelectorAll('.preference-selection-container');
-const prefContainer = document.querySelectorAll('.preference-container');
-const prefItem = document.querySelectorAll('.preference-selection-item')
-const deviceType = document.querySelectorAll('.device-type')
-const overlay = document.querySelector('.overlay')
-const checkoutSummary = document.querySelector('.checkout-summary');
-const planPrice = document.querySelector('.checkout-total')
-//Order section selectors
-const orderSummary = document.querySelector('.order-summary-content');
-const orderButton = document.querySelector('.order-button');
-
+// Heading Container
+const headingContainer = document.querySelectorAll('.preference-heading-container');
 //Hides all preferences
 for(let i = 0; i < headingContainer.length; i++) {
     headingContainer[i].nextElementSibling.classList.add('hide');
@@ -42,6 +28,8 @@ let drinkType = '...',
     grinds = '...',
     frequency = '...';
 
+
+const orderSummary = document.querySelector('.order-summary-content');
 //Order Summary constructor
 const orderPara = () => {
    orderSummary.innerHTML = `
@@ -209,25 +197,42 @@ monthly.addEventListener('click', () => {
     displayTotal()
 });
 
+const orderButton = document.querySelector('.order-button');
+const overlay = document.querySelector('.overlay');
+// Click event listener to toggle overlay
 orderButton.addEventListener('click', () => {
     overlay.classList.toggle('visible')
+    checkoutFinal()
 })
 
-checkoutSummary.innerHTML =  `
-<p class=order-summary-paragraph>"I drink my coffee <span class="order-span">${drinkType}</span>, 
-with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span> ground 
-ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
-`
+// Html for checkout summary
+const checkoutSummary = document.querySelector('.checkout-summary');
+const checkoutFinal = () => {
+    checkoutSummary.innerHTML =  `
+    <p class=checkout-summary-paragraph>"I drink my coffee <span class="order-span">${drinkType}</span>, 
+    with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span> ground 
+    ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
+    `
+}
 
+
+//Function to display price for checkout 
+const planPrice = document.querySelector('.checkout-total');
 const displayTotal = () => {
     planPrice.innerHTML = `$${total} / mo`
 }
+
+// Event listener to toggle overlay on checkout button.
+const checkoutBtn = document.querySelector('.checkout-finalize-button');
+checkoutBtn.addEventListener('click', () => {
+    overlay.classList.toggle('visible');
+})
 
 // TODO:
 
 // 1. hide and show selections on click, rotate arrow accordingly **DONE**
 // 2. change color of selections on hover **DONE**
-// 3. populate order summary with selections that are selected  
-// 4. create modal/order confirmation
+// 3. populate order summary with selections that are selected  **DONE**
+// 4. create modal/order confirmation **DONE**
 /* 5. create mobile navigation. **DONE but need to fix media query- 
 bug where navlist is still open on resize or when changing page ** */

@@ -415,6 +415,7 @@ hr {
     background-color: white;
     margin: 5% auto;
     border-radius: 10px;
+    position: relative;
 }
 
 .checkout-heading-container {
@@ -424,6 +425,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .checkout-heading {
@@ -435,27 +437,40 @@ hr {
 .checkout-summary {
     width: 428px;
     height: 160px;
-    background-color: yellowgreen;
     margin: 0 auto;
+    position: absolute;
+    top: 193px;
+    left: 56px;
+}
+
+.checkout-summary-paragraph {
+    color: var(--grey);
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    line-height: 40px;
 }
 
 .checkout-confirmation {
     width: 428px;
     height: 78px;
-    background-color: yellow;
     margin: 0 auto;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 360px;
+    left: 56px;
 }
 
 .checkout-finalize {
     width: 428px;
     height: 56px;
-    background-color: lightcoral;
     margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    position: absolute;
+    top: 485px;
+    left: 56px;
 }
 
 .checkout-finalize-button {
