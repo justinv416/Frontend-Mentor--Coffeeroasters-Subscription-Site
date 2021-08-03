@@ -28,7 +28,6 @@ let drinkType = '...',
     grinds = '...',
     frequency = '...';
 
-
 const orderSummary = document.querySelector('.order-summary-content');
 //Order Summary constructor
 const orderPara = () => {
@@ -44,34 +43,59 @@ orderPara()
 
 //checkout
 let total;
+let drinkPreference = false;
+let coffeePreference = false;
+let amountPreference = false;
+let grindPreference = false;
+let deliverPreference = false;
+
+const checkPrefences = () => {
+    if (drinkPreference && coffeePreference && 
+        amountPreference && grindPreference && deliverPreference) {
+        console.log('checked')
+        orderButton.classList.add('color')
+    } else if (!drinkPreference && !coffeePreference &&
+        !amountPreference && !grindPreference && !deliverPreference) {
+        orderButton.classList.remove('color')
+    }
+}
+
+
 
 //Drink Types
 const capsule = document.querySelector('#capsule');
 const filter = document.querySelector('#filter');
 const espresso = document.querySelector('#espresso');
 
+
 capsule.addEventListener('click', () => {
+    drinkPreference = true;
     capsule.classList.toggle('color');
     filter.classList.remove('color');
     espresso.classList.remove('color');
     drinkType = options.brewType[0];
     orderPara();
+    checkPrefences();
 });
 
 filter.addEventListener('click', () => {
+    drinkPreference = true;
     filter.classList.toggle('color')
     capsule.classList.remove('color')
     espresso.classList.remove('color')
     drinkType = options.brewType[1];
     orderPara();
+    checkPrefences();
 });
 
 espresso.addEventListener('click', () => {
+    drinkPreference = true;
     espresso.classList.toggle('color')
     filter.classList.remove('color')
     capsule.classList.remove('color')
-    drinkType = options.brewType[2]
+    drinkType = options.brewType[2];
     orderPara();
+    checkPrefences();
 });
 
 //Coffee Types
@@ -80,27 +104,33 @@ const decaf = document.querySelector('#decaf');
 const blended = document.querySelector('#blended');
 
 singleOrigin.addEventListener('click', () => {
+    coffeePreference = true;
     singleOrigin.classList.toggle('color')
     decaf.classList.remove('color')
     blended.classList.remove('color')
-    coffeeType = options.coffeeType[0]
-    orderPara()
+    coffeeType = options.coffeeType[0];
+    orderPara();
+    checkPrefences();
 });
 
 decaf.addEventListener('click', () => {
+    coffeePreference = true;
     decaf.classList.toggle('color')
     singleOrigin.classList.remove('color')
     blended.classList.remove('color')
-    coffeeType = options.coffeeType[1]
-    orderPara()
+    coffeeType = options.coffeeType[1];
+    orderPara();
+    checkPrefences();
 });
 
 blended.addEventListener('click', () => {
+    coffeePreference = true;
     blended.classList.toggle('color')
     singleOrigin.classList.remove('color')
     decaf.classList.remove('color')
     coffeeType = options.coffeeType[2]
-    orderPara()
+    orderPara();
+    checkPrefences();
 });
 
 //Amounts
@@ -109,27 +139,33 @@ const half = document.querySelector('#half');
 const full = document.querySelector('#full');
 
 quarter.addEventListener('click', () => {
+    amountPreference = true;
     quarter.classList.toggle('color');
     half.classList.remove('color');
     full.classList.remove('color');
     amount = options.coffeeAmount[0]
-    orderPara()
+    orderPara();
+    checkPrefences();
 });
 
 half.addEventListener('click', () => {
+    amountPreference = true;
     half.classList.toggle('color');
     quarter.classList.remove('color');
     full.classList.remove('color');
     amount = options.coffeeAmount[1]
-    orderPara()
+    orderPara();
+    checkPrefences();
 });
 
 full.addEventListener('click', () => {
+    amountPreference = true;
     full.classList.toggle('color');
     half.classList.remove('color');
     quarter.classList.remove('color');
     amount = options.coffeeAmount[2]
-    orderPara()
+    orderPara();
+    checkPrefences();
 });
 
 //Grinds 
@@ -138,27 +174,33 @@ const filterGrind = document.querySelector('#filter-grind');
 const cafetiere = document.querySelector('#cafetiere');
 
 wholeBean.addEventListener('click', () => {
+    grindPreference = true;
     wholeBean.classList.toggle('color');
     filterGrind.classList.remove('color');
     cafetiere.classList.remove('color');
     grinds = options.grindType[0]
-    orderPara()
+    orderPara();
+    checkPrefences();
 });
 
 filterGrind.addEventListener('click', () => {
+    grindPreference = true;
     filterGrind.classList.toggle('color');
     wholeBean.classList.remove('color');
     cafetiere.classList.remove('color');
     grinds = options.grindType[1]
-    orderPara()
+    orderPara();
+    checkPrefences();
 });
 
 cafetiere.addEventListener('click', () => {
+    grindPreference = true;
     cafetiere.classList.toggle('color');
     filterGrind.classList.remove('color');
     wholeBean.classList.remove('color');
     grinds = options.grindType[2]
-    orderPara()
+    orderPara();
+    checkPrefences();
 });
 
 //Deliveries
@@ -167,6 +209,7 @@ const biWeekly = document.querySelector('#bi-weekly');
 const monthly = document.querySelector('#monthly');
 
 weekly.addEventListener('click', () => {
+    deliverPreference = true;
     weekly.classList.toggle('color');
     biWeekly.classList.remove('color');
     monthly.classList.remove('color');
@@ -174,27 +217,35 @@ weekly.addEventListener('click', () => {
     orderPara()
     total = 14.00;
     displayTotal()
+    displayTotalMobile();
     console.log(total)
+    checkPrefences();
 });
 
 biWeekly.addEventListener('click', () => {
+    deliverPreference = true;
     biWeekly.classList.toggle('color');
     weekly.classList.remove('color');
     monthly.classList.remove('color');
     frequency = options.deliverFreq[1]
     orderPara()
     total = 17.25
-    displayTotal()
+    displayTotal();
+    displayTotalMobile();
+    checkPrefences();
 });
 
 monthly.addEventListener('click', () => {
+    deliverPreference = true;
     monthly.classList.toggle('color');
     biWeekly.classList.remove('color');
     weekly.classList.remove('color');
     frequency = options.deliverFreq[2]
     orderPara()
     total = 22.
-    displayTotal()
+    displayTotal();
+    displayTotalMobile();
+    checkPrefences();
 });
 
 const orderButton = document.querySelector('.order-button');
@@ -221,10 +272,17 @@ const planPrice = document.querySelector('.checkout-total');
 const displayTotal = () => {
     planPrice.innerHTML = `$${total} / mo`
 }
+const displayTotalMobile = () => {
+    checkoutBtnMobile.textContent = `Checkout - $${total} / mo`
+}
 
 // Event listener to toggle overlay on checkout button.
 const checkoutBtn = document.querySelector('.checkout-finalize-button');
+const checkoutBtnMobile = document.querySelector('.checkout-finalize-button-mobile');
 checkoutBtn.addEventListener('click', () => {
+    overlay.classList.toggle('visible');
+})
+checkoutBtnMobile.addEventListener('click', () => {
     overlay.classList.toggle('visible');
 })
 
@@ -236,3 +294,4 @@ checkoutBtn.addEventListener('click', () => {
 // 4. create modal/order confirmation **DONE**
 /* 5. create mobile navigation. **DONE but need to fix media query- 
 bug where navlist is still open on resize or when changing page ** */
+//6. once all options are selected change 'create plan' button color
