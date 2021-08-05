@@ -49,6 +49,10 @@ h1, h2, h3, h4, .selection-item {
     display: flex !important;
 }
 
+/* .disabled {
+
+} */
+
 .visible {
     display: block !important;
 }
@@ -517,6 +521,22 @@ h1, h2, h3, h4, .selection-item {
 
 .selection-item {
     color: var(--grey);
+    position: relative;
+    font-size: 24px;
+}
+
+.selection-item:hover {
+    color: var(--dark-grey-blue);
+}
+
+.selection-item::after {
+    content: '';
+    position: absolute;
+    width: 255px;
+    height: 1px;
+    background-color: var(--light-grey);
+    top: 50px;
+    left: 0;
 }
 
 hr {

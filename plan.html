@@ -9,7 +9,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="plan.css">
-      <title>Frontend Mentor | Coffeeroasters subscription site</title>
+      <title>Coffeeroasters subscription site</title>
     </head>
     <body>
       <div class="overlay">
@@ -104,20 +104,20 @@
         <section id="selection">
           <div class="selection-list-container">
             <ul class="selection-list">
-              <a href="#preferences"><li class="selection-item"><span class="selection-span span-one">1</span> Preferences</li><hr></a>
-              <a href="#bean-type"><li class="selection-item"><span class="selection-span">2</span> Bean Type</li><hr></a>
-              <a href="#quantity"><li class="selection-item"><span class="selection-span">3</span> Quantity</li><hr></a>
-              <a href="#grind-option"><li class="selection-item"><span class="selection-span">4</span> Grind Option</li><hr></a>
-              <a href="#deliveries"><li class="selection-item"><span class="selection-span">5</span> Deliveries</li><hr></a>
+              <a href="#preferences"><li class="selection-item"><span class="selection-span span-one">1</span> Preferences</li></a>
+              <a href="#bean-type"><li class="selection-item"><span class="selection-span">2</span> Bean Type</li></a>
+              <a href="#quantity"><li class="selection-item"><span class="selection-span">3</span> Quantity</li></a>
+              <a href="#grind-option"><li class="selection-item"><span class="selection-span">4</span> Grind Option</li></a>
+              <a href="#deliveries"><li class="selection-item"><span class="selection-span">5</span> Deliveries</li></a>
             </ul>
           </div>
           <div class="preferences-container">
             <div class="preference-container">
-              <div class="preference-heading-container" id="preferences">
+              <div class="preference-heading-container">
                 <h3 class="preference-heading">How do you drink your coffee?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="Arrow Icon" class="preference-arrow">
               </div>
-              <div class="preference-selection-container">
+              <div class="preference-selection-container" id="preferences">
                 <div class="preference-selection-item device-type" id="capsule">
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Capsule</h4>
@@ -208,8 +208,8 @@
                 </div>
               </div>
             </div>
-            <div class="preference-container preference-four">
-              <div class="preference-heading-container" id="grind-option">
+            <div class="preference-container preference-four" id="grind-option">
+              <div class="preference-heading-container">
                 <h3 class="preference-heading">Want us to grind them?</h3>
                 <img src="./assets/plan/desktop/icon-arrow.svg" alt="Arrow Icon" class="preference-arrow">
               </div>
@@ -250,7 +250,7 @@
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Every week</h4>
                     <p class="preference-selection-paragraph">
-                      $14.00 per shipment. Includes free first-class shipping.
+                      <span id="weekly-price"></span> per shipment. Includes free first-class shipping.
                     </p>
                   </div>
                 </div>
@@ -258,7 +258,7 @@
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Every 2 weeks</h4>
                     <p class="preference-selection-paragraph">
-                      $17.25 per shipment. Includes free priority shipping.
+                      <span id="bi-weekly-price"></span> per shipment. Includes free priority shipping.
                     </p>
                   </div>
                 </div>
@@ -266,7 +266,7 @@
                   <div class="preference-selection-content">
                     <h4 class="preference-selection-heading">Every month</h4>
                     <p class="preference-selection-paragraph">
-                      $22.50 per shipment. Includes free priority shipping.
+                      <span id="monthly-price"></span> Includes free priority shipping.
                     </p>
                   </div>
                 </div>
