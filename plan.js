@@ -35,7 +35,7 @@ const weeklyParagraph = document.querySelector('#weekly-price');
 const biWeeklyParagraph = document.querySelector('#bi-weekly-price');
 const monthlyParagraph = document.querySelector('#monthly-price');
 
-
+let total;
 
 //Order Summary constructor
 const orderSummary = document.querySelector('.order-summary-content');
@@ -56,32 +56,43 @@ const orderPara = () => {
 
 orderPara()
 
-
 let drinkPreference = false;
 let coffeePreference = false;
 let amountPreference = false;
 let grindPreference = false;
 let deliverPreference = false;
 const grindOption = document.querySelector('#grind-option')
+const orderButton = document.querySelector('.order-button');
+
+orderButton.classList.add('disabled');
 
 const checkPreferences = () => {
     if (drinkPreference && coffeePreference && 
         amountPreference && grindPreference && deliverPreference) {
-        console.log('checked')
-        orderButton.classList.add('color')
-    } else if (drinkPreference && coffeePreference && deliverPreference) {
-        orderButton.classList.add('color')
+        orderButton.classList.remove('disabled');
+        orderButton.classList.add('color');
+    } else if (drinkPreference && coffeePreference && amountPreference && deliverPreference) {
+        orderButton.classList.remove('disabled');
+        orderButton.classList.add('color');
     } else if (!drinkPreference && !coffeePreference &&
         !amountPreference && !grindPreference && !deliverPreference) {
-        orderButton.classList.remove('color')
+        orderButton.classList.remove('color');
     }
 }
+
 
 //Drink Types
 const capsule = document.querySelector('#capsule');
 const filter = document.querySelector('#filter');
 const espresso = document.querySelector('#espresso');
-let capsuleCheck = false
+let capsuleCheck = false;
+const isCapsuleCheck = () => {
+    if(capsuleCheck) {
+        capsuleOption();
+    } else {
+        orderPara();
+    }
+}
 
 const capsuleOption = () => {
     orderSummary.innerHTML = `
@@ -93,9 +104,8 @@ const capsuleOption = () => {
 
 capsule.addEventListener('click', () => {
     capsuleCheck = true;
-    grindOption.classList.remove('show')
-    grindOption.classList.add('hide')
-    console.log(capsuleCheck)
+    grindOption.classList.remove('show');
+    grindOption.classList.add('hide');
     drinkPreference = true;
     capsule.classList.toggle('color');
     filter.classList.remove('color');
@@ -146,11 +156,7 @@ singleOrigin.addEventListener('click', () => {
     decaf.classList.remove('color')
     blended.classList.remove('color')
     coffeeType = options.coffeeType[0];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
+    isCapsuleCheck();
     checkPreferences();
 });
 
@@ -160,11 +166,7 @@ decaf.addEventListener('click', () => {
     singleOrigin.classList.remove('color')
     blended.classList.remove('color')
     coffeeType = options.coffeeType[1];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
+    isCapsuleCheck();
     checkPreferences();
 });
 
@@ -174,11 +176,7 @@ blended.addEventListener('click', () => {
     singleOrigin.classList.remove('color')
     decaf.classList.remove('color')
     coffeeType = options.coffeeType[2]
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
+    isCapsuleCheck();
     checkPreferences();
 });
 
@@ -187,26 +185,60 @@ const quarter = document.querySelector('#quarter');
 const half = document.querySelector('#half');
 const full = document.querySelector('#full');
 let isQuarter, isHalf, isFull;
+let isWeekly, isBiWeekly, isMonthly;
+// this is causing issues on the modal page
+const amountCheckWeekly = () => {
+    if(isQuarter) {
+        total = options.price.priceWeekly[0];
+        weeklyParagraph.textContent = `$${options.price.priceWeekly[0]}`;
+    } else if(isHalf) {
+        total = options.price.priceWeekly[1];
+        weeklyParagraph.textContent = `$${options.price.priceWeekly[1]}`;
+    } else if (isFull) {
+        total = options.price.priceWeekly[2];
+        weeklyParagraph.textContent = `$${options.price.priceWeekly[2]}`;
+    }
+}
+const amountCheckBiWeekly = () => {
+    if(isQuarter) {
+        total = options.price.priceBiWeekly[0];
+        biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[0]}`;
+    } else if(isHalf) {
+        total = options.price.priceBiWeekly[1];
+        biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[1]}`;
+    } else if (isFull) {
+        total = options.price.priceBiWeekly[2];
+        biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[2]}`;
+    }
+}
+const amountCheckMonthly = () => {
+    if(isQuarter) {
+        total = options.price.priceMonthly[0];
+        monthlyParagraph.textContent = `$${options.price.priceMonthly[0]}`;
+    } else if(isHalf) {
+        total = options.price.priceMonthly[1];
+        monthlyParagraph.textContent = `$${options.price.priceMonthly[1]}`;
+    } else if (isFull) {
+        total = options.price.priceMonthly[2];
+        monthlyParagraph.textContent = `$${options.price.priceMonthly[2]}`;
+    }
+}
+
 
 quarter.addEventListener('click', () => {
     isQuarter = true;
     isHalf = false;
     isFull = false;
-    console.log(isQuarter)
     amountPreference = true;
     quarter.classList.toggle('color');
     half.classList.remove('color');
     full.classList.remove('color');
     amount = options.coffeeAmount[0];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
+    amountCheckWeekly();
+    amountCheckBiWeekly();
+    amountCheckMonthly();
+    isCapsuleCheck();
     checkPreferences();
-    weeklyParagraph.textContent = `$${options.price.priceWeekly[0]}`;
-    biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[0]}`;
-    monthlyParagraph.textContent = `$${options.price.priceMonthly[0]}`;
 });
 
 half.addEventListener('click', () => {
@@ -219,15 +251,11 @@ half.addEventListener('click', () => {
     quarter.classList.remove('color');
     full.classList.remove('color');
     amount = options.coffeeAmount[1];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
+    amountCheckWeekly();
+    amountCheckBiWeekly();
+    amountCheckMonthly();
+    isCapsuleCheck();
     checkPreferences();
-    weeklyParagraph.textContent = `$${options.price.priceWeekly[1]}`;
-    biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[1]}`;
-    monthlyParagraph.textContent = `$${options.price.priceMonthly[1]}`;
 });
 
 full.addEventListener('click', () => {
@@ -240,15 +268,11 @@ full.addEventListener('click', () => {
     half.classList.remove('color');
     quarter.classList.remove('color');
     amount = options.coffeeAmount[2];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
+    amountCheckWeekly();
+    amountCheckBiWeekly();
+    amountCheckMonthly();
+    isCapsuleCheck();
     checkPreferences();
-    weeklyParagraph.textContent = `$${options.price.priceWeekly[2]}`;
-    biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[2]}`;
-    monthlyParagraph.textContent = `$${options.price.priceMonthly[2]}`;
 });
 
 //Grinds 
@@ -288,53 +312,35 @@ cafetiere.addEventListener('click', () => {
 
 //Deliveries
 //checkout
-let total;
 const weekly = document.querySelector('#weekly');
 const biWeekly = document.querySelector('#bi-weekly');
 const monthly = document.querySelector('#monthly');
 
 weekly.addEventListener('click', () => {
     deliverPreference = true;
+    isWeekly = true;
+    isBiWeekly = false;
+    isMonthly = false;
     weekly.classList.toggle('color');
     biWeekly.classList.remove('color');
     monthly.classList.remove('color');
     frequency = options.deliverFreq[0];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
-    if(isQuarter) {
-        total = options.price.priceWeekly[0];
-    } else if(isHalf) {
-        total = options.price.priceWeekly[1];
-    } else if (isFull) {
-        total = options.price.priceWeekly[2];
-    }
-    displayTotal()
+    isCapsuleCheck();
+    displayTotal();
     displayTotalMobile();
-    console.log(total)
     checkPreferences();
 });
 
 biWeekly.addEventListener('click', () => {
     deliverPreference = true;
+    isWeekly = false;
+    isBiWeekly = true;
+    isMonthly = false;
     biWeekly.classList.toggle('color');
     weekly.classList.remove('color');
     monthly.classList.remove('color');
     frequency = options.deliverFreq[1];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
-    if(isQuarter) {
-        total = options.price.priceBiWeekly[0];
-    } else if(isHalf) {
-        total = options.price.priceBiWeekly[1];
-    } else if (isFull) {
-        total = options.price.priceBiWeekly[2];
-    }
+    isCapsuleCheck();
     displayTotal();
     displayTotalMobile();
     checkPreferences();
@@ -342,33 +348,24 @@ biWeekly.addEventListener('click', () => {
 
 monthly.addEventListener('click', () => {
     deliverPreference = true;
+    isWeekly = false;
+    isBiWeekly = false;
+    isMonthly = true;
     monthly.classList.toggle('color');
     biWeekly.classList.remove('color');
     weekly.classList.remove('color');
     frequency = options.deliverFreq[2];
-    if(capsuleCheck = true) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
-    if(isQuarter) {
-        total = options.price.priceMonthly[0];
-    } else if (isHalf) {
-        total = options.price.priceMonthly[1];
-    } else if (isFull) {
-        total = options.price.priceMonthly[2];
-    }
+    isCapsuleCheck();
     displayTotal();
     displayTotalMobile();
     checkPreferences();
 });
 
-const orderButton = document.querySelector('.order-button');
 const overlay = document.querySelector('.overlay');
 // Click event listener to toggle overlay
 orderButton.addEventListener('click', () => {
-    overlay.classList.toggle('visible')
-    checkoutModal()
+    overlay.classList.toggle('visible');
+    checkoutModal();
 })
 
 // Html for checkout summary
@@ -385,34 +382,33 @@ const checkoutModal = () => {
         with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span> ground 
         ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
         `
-    }
-}
+    };
+};
 
 //Function to display price for checkout 
 const planPrice = document.querySelector('.checkout-total');
 const displayTotal = () => {
     planPrice.innerHTML = `$${total} / mo`
-}
+};
 const displayTotalMobile = () => {
     checkoutBtnMobile.textContent = `Checkout - $${total} / mo`
-}
+};
 
 // Event listener to toggle overlay on checkout button.
 const checkoutBtn = document.querySelector('.checkout-finalize-button');
 const checkoutBtnMobile = document.querySelector('.checkout-finalize-button-mobile');
 checkoutBtn.addEventListener('click', () => {
     overlay.classList.toggle('visible');
-})
+});
 checkoutBtnMobile.addEventListener('click', () => {
     overlay.classList.toggle('visible');
-})
+});
 
 // TODO:
 
-// 1. hide and show selections on click, rotate arrow accordingly **DONE**
-// 2. change color of selections on hover **DONE**
-// 3. populate order summary with selections that are selected  **DONE**
-// 4. create modal/order confirmation **DONE**
-/* 5. create mobile navigation. **DONE but need to fix media query- 
+// 1. populate order summary with selections that are selected  **DONE but should refactor/dry up**
+// 2. create modal/order confirmation **Done but still buggy**
+// 3. disable delivery preference until all is selected. 
+/* 4. create mobile navigation. **DONE but need to fix media query- 
 bug where navlist is still open on resize or when changing page ** */
-//6. once all options are selected change 'create plan' button color
+// 5. Dry up code/refactor. 
