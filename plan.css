@@ -49,9 +49,10 @@ h1, h2, h3, h4, .selection-item {
     display: flex !important;
 }
 
-/* .disabled {
-
-} */
+.disabled {
+    pointer-events: none;
+    filter: opacity(50%);
+}
 
 .visible {
     display: block !important;
@@ -83,6 +84,12 @@ h1, h2, h3, h4, .selection-item {
     margin: auto;
 }
 
+@media screen and (max-width: 1280px) {
+    #header {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 769px) {
     #header {
         width: 689px;
@@ -95,9 +102,36 @@ h1, h2, h3, h4, .selection-item {
     }
 }
 
+#hero {
+    width: 1280px;
+    height: 450px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 168px;
+}
+
+@media screen and (max-width: 1280px) {
+    #hero {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #hero {
+        width: 689px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #hero  {
+        width: 327px;
+        margin-bottom: 102px;
+    }
+}
+
 #how-to {
     height: auto;
-    width: 1280px;
+    max-width: 1280px;
     height: 653px;
     margin: auto;
     display: flex;
@@ -107,6 +141,12 @@ h1, h2, h3, h4, .selection-item {
     margin-bottom: 168px;
     position: relative;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 1280px) {
+    #how-to {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -131,6 +171,12 @@ h1, h2, h3, h4, .selection-item {
     justify-content: space-evenly;
 }
 
+@media screen and (max-width: 1280px) {
+    #selection {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 769px) {
     #selection {
         width: 689px;
@@ -151,6 +197,12 @@ h1, h2, h3, h4, .selection-item {
     justify-content: space-between;
     width: 1280px;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 1280px) {
+    #footer {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -189,6 +241,12 @@ h1, h2, h3, h4, .selection-item {
     align-items: center;
     width: 1280px;
     height: 50px;
+}
+
+@media screen and (max-width: 1280px) {
+    .nav-main {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -240,29 +298,15 @@ h1, h2, h3, h4, .selection-item {
 }
 
 /* Hero */
-#hero {
-    width: 1280px;
-    height: 450px;
-    margin: 0 auto;
-    position: relative;
-    margin-bottom: 168px;
-}
-
-@media screen and (max-width: 769px) {
-    #hero {
-        width: 689px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    #hero  {
-        width: 327px;
-        margin-bottom: 102px;
-    }
-}
-
 .hero-image {
+    width: 1280px;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 1280px) {
+    .hero-image {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 769px) {

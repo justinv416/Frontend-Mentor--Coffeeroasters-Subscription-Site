@@ -52,6 +52,12 @@ button {
     margin: 30px auto;
 }
 
+@media screen and (max-width: 1280px) {
+    #header {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 769px) {
     #header {
         width: 689px;
@@ -65,6 +71,10 @@ button {
     }
 }
 
+#main {
+    padding: 0 10px;
+}
+
 #hero  {
     width: 1280px;
     height: 600px;
@@ -74,6 +84,13 @@ button {
     align-items: center;
     justify-content: center;
     margin-bottom: 136px;
+}
+
+@media screen and (max-width: 1280px) {
+    #hero {
+        width: 90%;  
+        height: auto;  
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -89,32 +106,6 @@ button {
     }
 }
 
-#cta {
-    height: 728px;
-    width: 1280px;
-    margin: 0px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    position: relative;
-    margin-bottom: 216px;
-}
-
-@media screen and (max-width: 769px) {
-    #cta {
-        width: 689px;
-        height: 863px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    #cta {
-        width: 327px;
-        height: 1499px;
-    }
-}
-
 #products {
     height: 524.55px;
     width: 1111px;
@@ -123,6 +114,12 @@ button {
     align-items: center;
     justify-content: center;
     margin-bottom: 184.45px;
+}
+
+@media screen and (max-width: 1280px) {
+    #products {
+        width: 90%;    
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -140,6 +137,38 @@ button {
     }
 }
 
+#cta {
+    height: 728px;
+    width: 1280px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    position: relative;
+    margin-bottom: 216px;
+}
+
+@media screen and (max-width: 1280px) {
+    #cta {
+        width: 90%;    
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #cta {
+        width: 689px;
+        height: 863px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #cta {
+        width: 327px;
+        height: 1499px;
+    }
+}
+
 #how-to {
     height: auto;
     width: 1045px;
@@ -148,6 +177,12 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 1280px) {
+    #how-to {
+        width: 90%;    
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -172,6 +207,12 @@ button {
     justify-content: space-between;
     width: 1280px;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 1280px) {
+    #footer {
+        width: 90%;    
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -226,8 +267,15 @@ button {
     height: 50px;
 }
 
+@media screen and (max-width: 1280px) {
+    .nav-main {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 769px) {
     .nav-main {
+        padding-right: 0;
         width: 689px;
         height: 26px;
     }
@@ -455,6 +503,13 @@ button {
     align-items: center;
 }
 
+@media screen and (max-width: 1280px) {
+    .products-container {
+        width: 90%;
+        justify-content: unset;
+    }
+}
+
 @media screen and (max-width: 769px) {
     .products-container {
         width: 689px;
@@ -476,6 +531,12 @@ button {
     color: var(--grey);
 }
 
+@media screen and (max-width: 1280px) {
+    .products-heading {
+        font-size: 100px;
+    }
+}
+
 @media screen and (max-width: 769px) {
     .products-heading {
         font-size: 72px;
@@ -495,6 +556,12 @@ button {
     background: linear-gradient(0deg, rgba(254,252,247,1) 0%, rgba(254,252,247,0) 100%);
     position: absolute;
     z-index: 1;
+}
+
+@media screen and (max-width: 1280px) {
+    .products-heading-overlay {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -634,6 +701,12 @@ button {
     border-radius: 10px;
 }
 
+@media screen and (max-width: 1280px) {
+    .cta-content {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 769px) {
     .cta-content {
         width: 688px;
@@ -655,6 +728,12 @@ button {
     width: 1110px;
     height: 382px;
     bottom: 0;
+}
+
+@media screen and (max-width: 1280px) {
+    .cta-container {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -705,6 +784,13 @@ button {
     align-items: center;
     justify-content: space-evenly;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 1280px) {
+    .cta-item {
+        margin: 10px;
+        height: 300px;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -785,6 +871,12 @@ button {
     align-items: flex-end;
     width: 1045px;
     height: 453px;
+}
+
+@media screen and (max-width: 1280px) {
+    .how-to-steps-container {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -924,6 +1016,12 @@ button {
 .button-container {
     width: 1045px;
     margin: 0 auto 200px auto;
+}
+
+@media screen and (max-width: 1280px) {
+    .button-container {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 769px) {

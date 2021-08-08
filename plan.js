@@ -45,6 +45,7 @@ let drinkType = '...',
     grinds = '...',
     frequency = '...';
 
+// Initial Sentence 
 const orderPara = () => {
    orderSummary.innerHTML = `
     <h5 class="order-summary-heading">Order Summary</h5>
@@ -56,44 +57,7 @@ const orderPara = () => {
 
 orderPara()
 
-let drinkPreference = false;
-let coffeePreference = false;
-let amountPreference = false;
-let grindPreference = false;
-let deliverPreference = false;
-const grindOption = document.querySelector('#grind-option')
-const orderButton = document.querySelector('.order-button');
-
-orderButton.classList.add('disabled');
-
-const checkPreferences = () => {
-    if (drinkPreference && coffeePreference && 
-        amountPreference && grindPreference && deliverPreference) {
-        orderButton.classList.remove('disabled');
-        orderButton.classList.add('color');
-    } else if (drinkPreference && coffeePreference && amountPreference && deliverPreference) {
-        orderButton.classList.remove('disabled');
-        orderButton.classList.add('color');
-    } else if (!drinkPreference && !coffeePreference &&
-        !amountPreference && !grindPreference && !deliverPreference) {
-        orderButton.classList.remove('color');
-    }
-}
-
-
-//Drink Types
-const capsule = document.querySelector('#capsule');
-const filter = document.querySelector('#filter');
-const espresso = document.querySelector('#espresso');
-let capsuleCheck = false;
-const isCapsuleCheck = () => {
-    if(capsuleCheck) {
-        capsuleOption();
-    } else {
-        orderPara();
-    }
-}
-
+// Sentence for capsule selection
 const capsuleOption = () => {
     orderSummary.innerHTML = `
     <h5 class="order-summary-heading">Order Summary</h5>
@@ -102,10 +66,69 @@ const capsuleOption = () => {
     `
 }
 
+// Html for checkout summary
+const checkoutSummary = document.querySelector('.checkout-summary');
+const checkoutModal = () => {
+    if (capsuleCheck) {
+        checkoutSummary.innerHTML = `
+        <p class=checkout-summary-paragraph>"I drink my coffee using <span class="order-span">${drinkType}s</span>, 
+        with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
+        `
+    } else {
+        checkoutSummary.innerHTML =  `
+        <p class=checkout-summary-paragraph>"I drink my coffee <span class="order-span">${drinkType}</span>, 
+        with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span> ground 
+        ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
+        `
+    };
+};
+
+let priceOutput =  document.querySelectorAll('.price-output');
+console.log(priceOutput)
+
+// Sets all intial preferences to false
+let drinkPreference = false;
+let coffeePreference = false;
+let amountPreference = false;
+let grindPreference = false;
+let deliverPreference = false;
+const grindOption = document.querySelector('#grind-option')
+
+// Disables 'create plan' button on bottom
+const orderButton = document.querySelector('.order-button');
+orderButton.classList.add('disabled');
+
+// Function to check to see if all options are selected. 
+// Once all options are valid the 'create plan' button is enabled.
+const checkPreferences = () => {
+    if (drinkPreference && coffeePreference && 
+        amountPreference && grindPreference && deliverPreference) {
+        orderButton.classList.remove('disabled');
+        orderButton.classList.add('color');
+    } else if (drinkPreference && coffeePreference 
+        && amountPreference && deliverPreference) {
+        orderButton.classList.remove('disabled');
+        orderButton.classList.add('color');
+    } else if (!drinkPreference && !coffeePreference &&
+        !amountPreference && !grindPreference && !deliverPreference) {
+        orderButton.classList.remove('color');
+    }
+}
+
+//Drink Types
+const capsule = document.querySelector('#capsule');
+const filter = document.querySelector('#filter');
+const espresso = document.querySelector('#espresso');
+
+// Sets capsule selection to false
+let capsuleCheck = false;
+
 capsule.addEventListener('click', () => {
     capsuleCheck = true;
-    grindOption.classList.remove('show');
-    grindOption.classList.add('hide');
+    grindOption.classList.add('disabled')
+    grindOption.children[1].classList.remove('show')
+    grindOption.children[1].classList.add('hide')
+    console.log(grindOption.children[1])
     drinkPreference = true;
     capsule.classList.toggle('color');
     filter.classList.remove('color');
@@ -117,10 +140,7 @@ capsule.addEventListener('click', () => {
 
 filter.addEventListener('click', () => {
     capsuleCheck = false;
-    if (!capsuleCheck) {
-        grindOption.classList.add('show');
-    }
-    console.log(capsuleCheck)
+    grindOption.classList.remove('disabled');
     drinkPreference = true;
     filter.classList.toggle('color')
     capsule.classList.remove('color')
@@ -132,10 +152,7 @@ filter.addEventListener('click', () => {
 
 espresso.addEventListener('click', () => {
     capsuleCheck = false;
-    if (!capsuleCheck) {
-        grindOption.classList.add('show');
-    }
-    console.log(capsuleCheck)
+    grindOption.classList.remove('disabled');
     drinkPreference = true;
     espresso.classList.toggle('color')
     filter.classList.remove('color')
@@ -156,7 +173,7 @@ singleOrigin.addEventListener('click', () => {
     decaf.classList.remove('color')
     blended.classList.remove('color')
     coffeeType = options.coffeeType[0];
-    isCapsuleCheck();
+    // isCapsuleCheck();
     checkPreferences();
 });
 
@@ -166,7 +183,6 @@ decaf.addEventListener('click', () => {
     singleOrigin.classList.remove('color')
     blended.classList.remove('color')
     coffeeType = options.coffeeType[1];
-    isCapsuleCheck();
     checkPreferences();
 });
 
@@ -176,7 +192,6 @@ blended.addEventListener('click', () => {
     singleOrigin.classList.remove('color')
     decaf.classList.remove('color')
     coffeeType = options.coffeeType[2]
-    isCapsuleCheck();
     checkPreferences();
 });
 
@@ -186,41 +201,36 @@ const half = document.querySelector('#half');
 const full = document.querySelector('#full');
 let isQuarter, isHalf, isFull;
 let isWeekly, isBiWeekly, isMonthly;
+
 // this is causing issues on the modal page
 const amountCheckWeekly = () => {
-    if(isQuarter) {
+    if(isQuarter && isWeekly) {
         total = options.price.priceWeekly[0];
-        weeklyParagraph.textContent = `$${options.price.priceWeekly[0]}`;
-    } else if(isHalf) {
+        console.log(total)
+    } else if(isHalf && isWeekly) {
         total = options.price.priceWeekly[1];
-        weeklyParagraph.textContent = `$${options.price.priceWeekly[1]}`;
-    } else if (isFull) {
+        console.log(total)
+    } else if (isFull && isWeekly) {
         total = options.price.priceWeekly[2];
-        weeklyParagraph.textContent = `$${options.price.priceWeekly[2]}`;
+        console.log(total)
     }
 }
 const amountCheckBiWeekly = () => {
-    if(isQuarter) {
+    if(isQuarter && isBiWeekly) {
         total = options.price.priceBiWeekly[0];
-        biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[0]}`;
-    } else if(isHalf) {
+    } else if(isHalf && isBiWeekly) {
         total = options.price.priceBiWeekly[1];
-        biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[1]}`;
-    } else if (isFull) {
+    } else if (isFull && isBiWeekly) {
         total = options.price.priceBiWeekly[2];
-        biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[2]}`;
     }
 }
 const amountCheckMonthly = () => {
-    if(isQuarter) {
+    if(isQuarter && isMonthly) {
         total = options.price.priceMonthly[0];
-        monthlyParagraph.textContent = `$${options.price.priceMonthly[0]}`;
-    } else if(isHalf) {
+    } else if(isHalf && isMonthly) {
         total = options.price.priceMonthly[1];
-        monthlyParagraph.textContent = `$${options.price.priceMonthly[1]}`;
-    } else if (isFull) {
+    } else if (isFull && isMonthly) {
         total = options.price.priceMonthly[2];
-        monthlyParagraph.textContent = `$${options.price.priceMonthly[2]}`;
     }
 }
 
@@ -234,11 +244,13 @@ quarter.addEventListener('click', () => {
     half.classList.remove('color');
     full.classList.remove('color');
     amount = options.coffeeAmount[0];
-    amountCheckWeekly();
-    amountCheckBiWeekly();
-    amountCheckMonthly();
-    isCapsuleCheck();
+
     checkPreferences();
+    console.log(total)
+    // Maybe a for loop to refactor
+    weeklyParagraph.textContent = `$${options.price.priceWeekly[0]}`;
+    biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[0]}`;
+    monthlyParagraph.textContent = `$${options.price.priceMonthly[0]}`;
 });
 
 half.addEventListener('click', () => {
@@ -251,11 +263,11 @@ half.addEventListener('click', () => {
     quarter.classList.remove('color');
     full.classList.remove('color');
     amount = options.coffeeAmount[1];
-    amountCheckWeekly();
-    amountCheckBiWeekly();
-    amountCheckMonthly();
-    isCapsuleCheck();
     checkPreferences();
+    console.log(total)
+    weeklyParagraph.textContent = `$${options.price.priceWeekly[1]}`;
+    biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[1]}`;
+    monthlyParagraph.textContent = `$${options.price.priceMonthly[1]}`;
 });
 
 full.addEventListener('click', () => {
@@ -268,12 +280,14 @@ full.addEventListener('click', () => {
     half.classList.remove('color');
     quarter.classList.remove('color');
     amount = options.coffeeAmount[2];
-    amountCheckWeekly();
-    amountCheckBiWeekly();
-    amountCheckMonthly();
-    isCapsuleCheck();
     checkPreferences();
+    console.log(total)
+    weeklyParagraph.textContent = `$${options.price.priceWeekly[2]}`;
+    biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[2]}`;
+    monthlyParagraph.textContent = `$${options.price.priceMonthly[2]}`;
 });
+
+
 
 //Grinds 
 const wholeBean = document.querySelector('#whole-bean');
@@ -325,7 +339,7 @@ weekly.addEventListener('click', () => {
     biWeekly.classList.remove('color');
     monthly.classList.remove('color');
     frequency = options.deliverFreq[0];
-    isCapsuleCheck();
+    amountCheckWeekly();
     displayTotal();
     displayTotalMobile();
     checkPreferences();
@@ -340,7 +354,7 @@ biWeekly.addEventListener('click', () => {
     weekly.classList.remove('color');
     monthly.classList.remove('color');
     frequency = options.deliverFreq[1];
-    isCapsuleCheck();
+    amountCheckBiWeekly();
     displayTotal();
     displayTotalMobile();
     checkPreferences();
@@ -355,7 +369,7 @@ monthly.addEventListener('click', () => {
     biWeekly.classList.remove('color');
     weekly.classList.remove('color');
     frequency = options.deliverFreq[2];
-    isCapsuleCheck();
+    amountCheckMonthly();
     displayTotal();
     displayTotalMobile();
     checkPreferences();
@@ -364,26 +378,14 @@ monthly.addEventListener('click', () => {
 const overlay = document.querySelector('.overlay');
 // Click event listener to toggle overlay
 orderButton.addEventListener('click', () => {
-    overlay.classList.toggle('visible');
+    amountCheckWeekly();
+    amountCheckBiWeekly();
+    amountCheckMonthly();
     checkoutModal();
+    displayTotal();
+    overlay.classList.toggle('visible');
 })
 
-// Html for checkout summary
-const checkoutSummary = document.querySelector('.checkout-summary');
-const checkoutModal = () => {
-    if (capsuleCheck) {
-        checkoutSummary.innerHTML = `
-        <p class=checkout-summary-paragraph>"I drink my coffee using <span class="order-span">${drinkType}s</span>, 
-        with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
-        `
-    } else {
-        checkoutSummary.innerHTML =  `
-        <p class=checkout-summary-paragraph>"I drink my coffee <span class="order-span">${drinkType}</span>, 
-        with a <span class="order-span">${coffeeType}</span> type of bean. <span class="order-span">${amount}</span> ground 
-        ala <span class="order-span">${grinds}</span>, sent to me <span class="order-span">${frequency}</span>."</p>
-        `
-    };
-};
 
 //Function to display price for checkout 
 const planPrice = document.querySelector('.checkout-total');
@@ -408,7 +410,7 @@ checkoutBtnMobile.addEventListener('click', () => {
 
 // 1. populate order summary with selections that are selected  **DONE but should refactor/dry up**
 // 2. create modal/order confirmation **Done but still buggy**
-// 3. disable delivery preference until all is selected. 
+// 3. disable delivery preference until all is selected. **DONE**
 /* 4. create mobile navigation. **DONE but need to fix media query- 
 bug where navlist is still open on resize or when changing page ** */
 // 5. Dry up code/refactor. 
