@@ -366,6 +366,16 @@ button {
     top: 100px;
 }
 
+@media screen and (max-width: 1280px) {
+    .hero-content {
+        width: 50vw;
+        height: 20vh;
+        left: 50px;
+        top: 65px;
+    }
+}
+
+
 @media screen and (max-width: 769px) {
     .hero-content {
         width: 398px;
@@ -433,6 +443,12 @@ button {
     color: var(--light-cream);
 }
 
+@media screen and (max-width: 1280px) {
+    .hero-heading {
+        font-size: 5vw;
+    }
+}
+
 @media screen and (max-width: 769px) {
     .hero-heading {
         font-size: 48px;
@@ -447,9 +463,15 @@ button {
 }
 
 .hero-paragraph {
-    font-size: 1rem;
     color: var(--light-cream);
     line-height: 30px;
+}
+
+@media screen and (max-width: 1280px) {
+    .hero-paragraph {
+        margin: 10px 0;
+        font-size: 1.5vw;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -471,6 +493,13 @@ button {
     color: white;
     border: none;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 1280px) {
+    .hero-button {
+        width: 200px;
+        height: 50px;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -944,7 +973,7 @@ button {
 }
 
 .circle-three {
-    right: 0;
+    left: 100%;
 }
 
 .step {

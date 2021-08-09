@@ -66,6 +66,14 @@ const capsuleOption = () => {
     `
 }
 
+const isCapsuleCheck = () => {
+    if (capsuleCheck) {
+       capsuleOption();
+    } else {
+        orderPara();
+    };
+} 
+
 // Html for checkout summary
 const checkoutSummary = document.querySelector('.checkout-summary');
 const checkoutModal = () => {
@@ -84,7 +92,6 @@ const checkoutModal = () => {
 };
 
 let priceOutput =  document.querySelectorAll('.price-output');
-console.log(priceOutput)
 
 // Sets all intial preferences to false
 let drinkPreference = false;
@@ -112,6 +119,7 @@ const checkPreferences = () => {
     } else if (!drinkPreference && !coffeePreference &&
         !amountPreference && !grindPreference && !deliverPreference) {
         orderButton.classList.remove('color');
+        orderButton.classList.add('disabled');
     }
 }
 
@@ -125,40 +133,39 @@ let capsuleCheck = false;
 
 capsule.addEventListener('click', () => {
     capsuleCheck = true;
+    drinkPreference = true;
+    drinkType = options.brewType[0];
+    isCapsuleCheck();
     grindOption.classList.add('disabled')
     grindOption.children[1].classList.remove('show')
     grindOption.children[1].classList.add('hide')
-    console.log(grindOption.children[1])
-    drinkPreference = true;
-    capsule.classList.toggle('color');
+    capsule.classList.add('color');
     filter.classList.remove('color');
     espresso.classList.remove('color');
-    drinkType = options.brewType[0];
-    capsuleOption();
     checkPreferences();
 });
 
 filter.addEventListener('click', () => {
     capsuleCheck = false;
+    drinkType = options.brewType[1];
+    isCapsuleCheck();
     grindOption.classList.remove('disabled');
     drinkPreference = true;
-    filter.classList.toggle('color')
+    filter.classList.add('color')
     capsule.classList.remove('color')
     espresso.classList.remove('color')
-    drinkType = options.brewType[1];
-    orderPara();
     checkPreferences();
 });
 
 espresso.addEventListener('click', () => {
     capsuleCheck = false;
-    grindOption.classList.remove('disabled');
     drinkPreference = true;
-    espresso.classList.toggle('color')
+    drinkType = options.brewType[2];
+    isCapsuleCheck();
+    grindOption.classList.remove('disabled');
+    espresso.classList.add('color')
     filter.classList.remove('color')
     capsule.classList.remove('color')
-    drinkType = options.brewType[2];
-    orderPara();
     checkPreferences();
 });
 
@@ -169,29 +176,31 @@ const blended = document.querySelector('#blended');
 
 singleOrigin.addEventListener('click', () => {
     coffeePreference = true;
-    singleOrigin.classList.toggle('color')
+    coffeeType = options.coffeeType[0];
+    isCapsuleCheck();
+    singleOrigin.classList.add('color')
     decaf.classList.remove('color')
     blended.classList.remove('color')
-    coffeeType = options.coffeeType[0];
-    // isCapsuleCheck();
     checkPreferences();
 });
 
 decaf.addEventListener('click', () => {
     coffeePreference = true;
-    decaf.classList.toggle('color')
+    coffeeType = options.coffeeType[1];
+    isCapsuleCheck();
+    decaf.classList.add('color')
     singleOrigin.classList.remove('color')
     blended.classList.remove('color')
-    coffeeType = options.coffeeType[1];
     checkPreferences();
 });
 
 blended.addEventListener('click', () => {
     coffeePreference = true;
-    blended.classList.toggle('color')
+    coffeeType = options.coffeeType[2];
+    isCapsuleCheck();
+    blended.classList.add('color')
     singleOrigin.classList.remove('color')
     decaf.classList.remove('color')
-    coffeeType = options.coffeeType[2]
     checkPreferences();
 });
 
@@ -202,7 +211,6 @@ const full = document.querySelector('#full');
 let isQuarter, isHalf, isFull;
 let isWeekly, isBiWeekly, isMonthly;
 
-// this is causing issues on the modal page
 const amountCheckWeekly = () => {
     if(isQuarter && isWeekly) {
         total = options.price.priceWeekly[0];
@@ -234,19 +242,17 @@ const amountCheckMonthly = () => {
     }
 }
 
-
 quarter.addEventListener('click', () => {
     isQuarter = true;
     isHalf = false;
     isFull = false;
     amountPreference = true;
-    quarter.classList.toggle('color');
+    amount = options.coffeeAmount[0];
+    isCapsuleCheck();
+    quarter.classList.add('color');
     half.classList.remove('color');
     full.classList.remove('color');
-    amount = options.coffeeAmount[0];
-
     checkPreferences();
-    console.log(total)
     // Maybe a for loop to refactor
     weeklyParagraph.textContent = `$${options.price.priceWeekly[0]}`;
     biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[0]}`;
@@ -257,14 +263,13 @@ half.addEventListener('click', () => {
     isQuarter = false;
     isHalf = true;
     isFull = false;
-    console.log(isQuarter, isHalf)
     amountPreference = true;
-    half.classList.toggle('color');
+    amount = options.coffeeAmount[1];
+    isCapsuleCheck();
+    half.classList.add('color');
     quarter.classList.remove('color');
     full.classList.remove('color');
-    amount = options.coffeeAmount[1];
     checkPreferences();
-    console.log(total)
     weeklyParagraph.textContent = `$${options.price.priceWeekly[1]}`;
     biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[1]}`;
     monthlyParagraph.textContent = `$${options.price.priceMonthly[1]}`;
@@ -274,20 +279,17 @@ full.addEventListener('click', () => {
     isQuarter = false;
     isHalf = false;
     isFull = true;
-    console.log(isQuarter, isHalf, isFull)
     amountPreference = true;
-    full.classList.toggle('color');
+    amount = options.coffeeAmount[2];
+    isCapsuleCheck();
+    full.classList.add('color');
     half.classList.remove('color');
     quarter.classList.remove('color');
-    amount = options.coffeeAmount[2];
     checkPreferences();
-    console.log(total)
     weeklyParagraph.textContent = `$${options.price.priceWeekly[2]}`;
     biWeeklyParagraph.textContent = `$${options.price.priceBiWeekly[2]}`;
     monthlyParagraph.textContent = `$${options.price.priceMonthly[2]}`;
 });
-
-
 
 //Grinds 
 const wholeBean = document.querySelector('#whole-bean');
@@ -296,31 +298,31 @@ const cafetiere = document.querySelector('#cafetiere');
 
 wholeBean.addEventListener('click', () => {
     grindPreference = true;
-    wholeBean.classList.toggle('color');
+    grinds = options.grindType[0];
+    isCapsuleCheck();
+    wholeBean.classList.add('color');
     filterGrind.classList.remove('color');
     cafetiere.classList.remove('color');
-    grinds = options.grindType[0]
-    orderPara();
     checkPreferences();
 });
 
 filterGrind.addEventListener('click', () => {
     grindPreference = true;
-    filterGrind.classList.toggle('color');
+    grinds = options.grindType[1];
+    isCapsuleCheck();
+    filterGrind.classList.add('color');
     wholeBean.classList.remove('color');
     cafetiere.classList.remove('color');
-    grinds = options.grindType[1]
-    orderPara();
     checkPreferences();
 });
 
 cafetiere.addEventListener('click', () => {
     grindPreference = true;
-    cafetiere.classList.toggle('color');
+    grinds = options.grindType[2];
+    isCapsuleCheck();
+    cafetiere.classList.add('color');
     filterGrind.classList.remove('color');
     wholeBean.classList.remove('color');
-    grinds = options.grindType[2]
-    orderPara();
     checkPreferences();
 });
 
@@ -335,10 +337,11 @@ weekly.addEventListener('click', () => {
     isWeekly = true;
     isBiWeekly = false;
     isMonthly = false;
-    weekly.classList.toggle('color');
+    frequency = options.deliverFreq[0];
+    isCapsuleCheck();
+    weekly.classList.add('color');
     biWeekly.classList.remove('color');
     monthly.classList.remove('color');
-    frequency = options.deliverFreq[0];
     amountCheckWeekly();
     displayTotal();
     displayTotalMobile();
@@ -350,10 +353,11 @@ biWeekly.addEventListener('click', () => {
     isWeekly = false;
     isBiWeekly = true;
     isMonthly = false;
-    biWeekly.classList.toggle('color');
+    frequency = options.deliverFreq[1];
+    isCapsuleCheck();
+    biWeekly.classList.add('color');
     weekly.classList.remove('color');
     monthly.classList.remove('color');
-    frequency = options.deliverFreq[1];
     amountCheckBiWeekly();
     displayTotal();
     displayTotalMobile();
@@ -365,10 +369,11 @@ monthly.addEventListener('click', () => {
     isWeekly = false;
     isBiWeekly = false;
     isMonthly = true;
-    monthly.classList.toggle('color');
+    frequency = options.deliverFreq[2];
+    isCapsuleCheck();
+    monthly.classList.add('color');
     biWeekly.classList.remove('color');
     weekly.classList.remove('color');
-    frequency = options.deliverFreq[2];
     amountCheckMonthly();
     displayTotal();
     displayTotalMobile();
@@ -385,7 +390,6 @@ orderButton.addEventListener('click', () => {
     displayTotal();
     overlay.classList.toggle('visible');
 })
-
 
 //Function to display price for checkout 
 const planPrice = document.querySelector('.checkout-total');

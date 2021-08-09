@@ -392,6 +392,14 @@ h1, h2, h3, h4, .selection-item {
     left: 85px;
 }
 
+@media screen and (max-width: 1280px) {
+    .how-to-steps-container {
+        left: 60px;
+        width: 90%;
+    }
+}
+
+
 @media screen and (max-width: 769px) {
     .how-to-steps-container {
         width: 689px;
@@ -428,6 +436,12 @@ h1, h2, h3, h4, .selection-item {
     top: 100px;
 }
 
+@media screen and (max-width: 1280px) {
+    .line-graphic {
+        width: 60%;
+    }
+}
+
 @media screen and (max-width: 769px) {
     .line-graphic {
         width: 467px;
@@ -452,7 +466,7 @@ h1, h2, h3, h4, .selection-item {
 }
 
 .circle-one {
-    left: 0;
+    left: -30px;
 }
 
 .circle-two {
@@ -460,7 +474,7 @@ h1, h2, h3, h4, .selection-item {
 }
 
 .circle-three {
-    right: 0;
+    left: 100%;
 }
 
 .step {
