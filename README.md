@@ -24,7 +24,7 @@ Users should be able to:
 
 ### Screenshot
 
-[Coffeeroasters Screenshot](https://user-images.githubusercontent.com/54160489/128757029-fce428bd-2cf3-42d9-8918-a59592ae9a14.png)
+![](https://user-images.githubusercontent.com/54160489/128757029-fce428bd-2cf3-42d9-8918-a59592ae9a14.png)
 
 ### Links
 
