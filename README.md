@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://app.netlify.com/sites/sleepy-clarke-40762d/overview)
+- Live Site URL: [Live Site](https://sleepy-clarke-40762d.netlify.app/)
 
 ## My process
 
