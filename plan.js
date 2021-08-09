@@ -409,12 +409,3 @@ checkoutBtn.addEventListener('click', () => {
 checkoutBtnMobile.addEventListener('click', () => {
     overlay.classList.toggle('visible');
 });
-
-// TODO:
-
-// 1. populate order summary with selections that are selected  **DONE but should refactor/dry up**
-// 2. create modal/order confirmation **Done but still buggy**
-// 3. disable delivery preference until all is selected. **DONE**
-/* 4. create mobile navigation. **DONE but need to fix media query- 
-bug where navlist is still open on resize or when changing page ** */
-// 5. Dry up code/refactor. 
