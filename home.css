@@ -777,6 +777,8 @@ button {
     .cta-container {
         width: 279px;
         height: 1200px;
+        position: absolute;
+        left: 15px;
     }
 }
 
